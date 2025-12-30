@@ -1,30 +1,31 @@
+import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
-import ClassicAccordion from "./shared/ui/ClassicAccordion";
-import CustomAccordion from "./shared/ui/CustomAccordion";
+import ClassicAccordion from "../shared/ui/ClassicAccordion";
+import CustomAccordion from "../shared/ui/CustomAccordion";
 import { Accordion } from "@base-ui/react/accordion";
 import { FaPlus } from "react-icons/fa";
-import DeleteUserModal from "./testingComponents/DeleteUserModal";
-import AddNewUserModal from "./testingComponents/addNewUserModal";
-import AutocompleteInput from "./shared/ui/AutocompleteInput";
-import AvatarImage from "./shared/ui/Avatar";
-import Button from "./shared/ui/Button";
-import SkeletonLoading from "./shared/ui/Skeleton";
-import Checkbox from "./shared/ui/Checkbox";
-import CheckboxGroup from "./shared/ui/CheckboxGroup";
-import MultipleSelect from "./shared/ui/MultipleSelect";
-import Input from "./shared/ui/Input";
-import Meter from "./shared/ui/Meter";
-import Popover from "./shared/ui/Popover";
-import { FaBell } from "react-icons/fa";
-import { IoIosArrowUp } from "react-icons/io";
+import DeleteUserModal from "../testingComponents/DeleteUserModal";
+import AddNewUserModal from "../testingComponents/addNewUserModal";
+import AutocompleteInput from "../shared/ui/AutocompleteInput";
+import AvatarImage from "../shared/ui/Avatar";
+import Button from "../shared/ui/Button";
+import SkeletonLoading from "../shared/ui/Skeleton";
+import Checkbox from "../shared/ui/Checkbox";
+import CheckboxGroup from "../shared/ui/CheckboxGroup";
+import MultipleSelect from "../shared/ui/MultipleSelect";
+import Input from "../shared/ui/Input";
+import Meter from "../shared/ui/Meter";
+import Popover from "../shared/ui/Popover";
+export const Route = createFileRoute("/")({
+  component: RouteComponent,
+});
 interface User {
   id: number;
   name: string;
   email: string;
   role: string;
 }
-
-function App() {
+function RouteComponent() {
   const [users, setUsers] = useState<User[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -268,5 +269,3 @@ function App() {
     </>
   );
 }
-
-export default App;
