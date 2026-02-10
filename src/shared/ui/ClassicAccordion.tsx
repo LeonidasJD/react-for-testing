@@ -1,16 +1,25 @@
 import { Accordion } from "@base-ui/react/accordion";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import {
+  accordionVariants,
+  type AccordionVariants,
+} from "../../variants/accordionVariants";
 
-interface ClassicAccordionProps {
+interface ClassicAccordionProps extends AccordionVariants {
   items: {
     title: string;
     content: string;
   }[];
 }
 
-export default function ClasicAccordion({ items }: ClassicAccordionProps) {
+export default function ClasicAccordion({
+  items,
+  variant,
+}: ClassicAccordionProps) {
   const [openItems, setOpenItems] = useState<string[]>([]);
+
+  const styles = accordionVariants({ variant });
 
   const toggleItem = (value: string) => {
     setOpenItems((prev) =>
@@ -27,20 +36,20 @@ export default function ClasicAccordion({ items }: ClassicAccordionProps) {
 
         return (
           <Accordion.Item
-            className="overflow-hidden rounded-md bg-white shadow-sm"
+            className={styles.item()}
             key={item.title}
             value={item.title}
           >
             <Accordion.Header className="rounded-md">
               <Accordion.Trigger
                 onClick={() => toggleItem(item.title)}
-                className="flex w-full items-center justify-between p-4 text-left text-gray-800 transition-colors hover:bg-gray-50"
+                className={styles.trigger()}
               >
                 <span className="font-medium">{item.title}</span>
                 <motion.span
                   animate={{ rotate: isOpen ? 180 : 0 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="text-xl"
+                  className={styles.icon()}
                 >
                   ▼
                 </motion.span>
@@ -69,7 +78,7 @@ export default function ClasicAccordion({ items }: ClassicAccordionProps) {
                   }}
                   className="overflow-hidden"
                 >
-                  <Accordion.Panel className="p-4 text-gray-600">
+                  <Accordion.Panel className={styles.panel()}>
                     {item.content}
                   </Accordion.Panel>
                 </motion.div>

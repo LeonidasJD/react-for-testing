@@ -14,6 +14,7 @@ function RouteComponent() {
         <Button
           variant="primary"
           size="medium"
+          disabled={true}
           onClick={() => {
             console.log("clicked");
           }}

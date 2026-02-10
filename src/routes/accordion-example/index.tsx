@@ -26,7 +26,7 @@ function RouteComponent() {
     <>
       <div className="w-full max-w-md">
         <p className="text-lg font-bold text-gray-800">Classic Accordion</p>
-        <ClassicAccordion items={items} />
+        <ClassicAccordion variant="primary" items={items} />
       </div>
 
       <div className="w-full max-w-md">
