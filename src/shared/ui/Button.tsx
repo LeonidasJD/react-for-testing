@@ -9,6 +9,7 @@ interface ButtonProps extends ButtonVariants {
   children?: React.ReactNode;
   className?: string;
   onClick?: () => void;
+  type?: "button" | "submit";
 }
 
 const Button = ({
@@ -19,6 +20,7 @@ const Button = ({
   children,
   className,
   onClick,
+  type = "button",
   ...props
 }: ButtonProps) => {
   return (
@@ -31,6 +33,7 @@ const Button = ({
       })}
       onClick={onClick}
       disabled={disabled}
+      type={type}
       {...props}
     >
       {render ?? children}

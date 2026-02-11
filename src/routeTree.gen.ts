@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TextExampleIndexRouteImport } from './routes/text-example/index'
 import { Route as SkeletonExampleIndexRouteImport } from './routes/skeleton-example/index'
+import { Route as SelectExampleIndexRouteImport } from './routes/select-example/index'
 import { Route as ModalExampleIndexRouteImport } from './routes/modal-example/index'
 import { Route as InputsExampleIndexRouteImport } from './routes/inputs-example/index'
 import { Route as ButtonsExampleIndexRouteImport } from './routes/buttons-example/index'
@@ -31,6 +32,11 @@ const TextExampleIndexRoute = TextExampleIndexRouteImport.update({
 const SkeletonExampleIndexRoute = SkeletonExampleIndexRouteImport.update({
   id: '/skeleton-example/',
   path: '/skeleton-example/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SelectExampleIndexRoute = SelectExampleIndexRouteImport.update({
+  id: '/select-example/',
+  path: '/select-example/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ModalExampleIndexRoute = ModalExampleIndexRouteImport.update({
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/buttons-example': typeof ButtonsExampleIndexRoute
   '/inputs-example': typeof InputsExampleIndexRoute
   '/modal-example': typeof ModalExampleIndexRoute
+  '/select-example': typeof SelectExampleIndexRoute
   '/skeleton-example': typeof SkeletonExampleIndexRoute
   '/text-example': typeof TextExampleIndexRoute
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/buttons-example': typeof ButtonsExampleIndexRoute
   '/inputs-example': typeof InputsExampleIndexRoute
   '/modal-example': typeof ModalExampleIndexRoute
+  '/select-example': typeof SelectExampleIndexRoute
   '/skeleton-example': typeof SkeletonExampleIndexRoute
   '/text-example': typeof TextExampleIndexRoute
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/buttons-example/': typeof ButtonsExampleIndexRoute
   '/inputs-example/': typeof InputsExampleIndexRoute
   '/modal-example/': typeof ModalExampleIndexRoute
+  '/select-example/': typeof SelectExampleIndexRoute
   '/skeleton-example/': typeof SkeletonExampleIndexRoute
   '/text-example/': typeof TextExampleIndexRoute
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/buttons-example'
     | '/inputs-example'
     | '/modal-example'
+    | '/select-example'
     | '/skeleton-example'
     | '/text-example'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/buttons-example'
     | '/inputs-example'
     | '/modal-example'
+    | '/select-example'
     | '/skeleton-example'
     | '/text-example'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/buttons-example/'
     | '/inputs-example/'
     | '/modal-example/'
+    | '/select-example/'
     | '/skeleton-example/'
     | '/text-example/'
   fileRoutesById: FileRoutesById
@@ -130,6 +142,7 @@ export interface RootRouteChildren {
   ButtonsExampleIndexRoute: typeof ButtonsExampleIndexRoute
   InputsExampleIndexRoute: typeof InputsExampleIndexRoute
   ModalExampleIndexRoute: typeof ModalExampleIndexRoute
+  SelectExampleIndexRoute: typeof SelectExampleIndexRoute
   SkeletonExampleIndexRoute: typeof SkeletonExampleIndexRoute
   TextExampleIndexRoute: typeof TextExampleIndexRoute
 }
@@ -155,6 +168,13 @@ declare module '@tanstack/react-router' {
       path: '/skeleton-example'
       fullPath: '/skeleton-example'
       preLoaderRoute: typeof SkeletonExampleIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/select-example/': {
+      id: '/select-example/'
+      path: '/select-example'
+      fullPath: '/select-example'
+      preLoaderRoute: typeof SelectExampleIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/modal-example/': {
@@ -202,6 +222,7 @@ const rootRouteChildren: RootRouteChildren = {
   ButtonsExampleIndexRoute: ButtonsExampleIndexRoute,
   InputsExampleIndexRoute: InputsExampleIndexRoute,
   ModalExampleIndexRoute: ModalExampleIndexRoute,
+  SelectExampleIndexRoute: SelectExampleIndexRoute,
   SkeletonExampleIndexRoute: SkeletonExampleIndexRoute,
   TextExampleIndexRoute: TextExampleIndexRoute,
 }

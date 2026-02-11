@@ -16,6 +16,8 @@ import MultipleSelect from "../shared/ui/MultipleSelect";
 import Input from "../shared/ui/Input";
 import Meter from "../shared/ui/Meter";
 import Popover from "../shared/ui/Popover";
+import Text from "../shared/ui/Text";
+import Select from "../shared/ui/Select";
 export const Route = createFileRoute("/")({
   component: RouteComponent,
 });
@@ -86,6 +88,14 @@ function RouteComponent() {
     { value: "apple", label: "Apple" },
     { value: "banana", label: "Banana" },
     { value: "strawberries", label: "Strawberries" },
+  ];
+
+  const apples = [
+    { label: "Gala", value: "gala" },
+    { label: "Fuji", value: "fuji" },
+    { label: "Honeycrisp", value: "honeycrisp" },
+    { label: "Granny Smith", value: "granny-smith" },
+    { label: "Pink Lady", value: "pink-lady" },
   ];
 
   return (
@@ -262,6 +272,43 @@ function RouteComponent() {
                   description: "This is a notification",
                 },
               ]}
+            />
+          </div>
+
+          <div>
+            <p className="text-lg font-bold text-gray-800">Text</p>
+            <div className="mt-10 flex flex-col items-center justify-center gap-4">
+              <Text
+                variant="h1"
+                color="primary"
+                render={<h1>Hello World</h1>}
+              />
+              <Text
+                variant="h2"
+                color="secondary"
+                render={<h2>Hello World</h2>}
+              />
+              <Text variant="h3" color="muted" render={<h3>Hello World</h3>} />
+              <Text variant="h4" color="danger" render={<h4>Hello World</h4>} />
+              <Text variant="base" color="success">
+                Hello World
+              </Text>
+              <Text
+                variant="caption"
+                color="primary"
+                render={<span>Hello World</span>}
+              />
+            </div>
+          </div>
+
+          <div>
+            <p className="text-lg font-bold text-gray-800">Select</p>
+            <Select
+              onValueChange={(value) => {
+                console.log(value);
+              }}
+              options={apples}
+              label="Select an apple"
             />
           </div>
         </div>
