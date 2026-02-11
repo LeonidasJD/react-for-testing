@@ -27,7 +27,7 @@ const Select = ({ label, options, onValueChange }: SelectProps) => {
         items={options}
         onValueChange={(value) => onValueChange(value as string)}
       >
-        <SelectBase.Trigger className="flex h-10 min-w-40 items-center justify-between gap-3 rounded-md border border-gray-200 bg-[canvas] pr-3 pl-3.5 text-base text-gray-900 select-none hover:bg-gray-100 focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 data-popup-open:bg-gray-100">
+        <SelectBase.Trigger className="flex h-10 min-w-40 cursor-pointer items-center justify-between gap-3 rounded-md border border-gray-200 bg-[canvas] pr-3 pl-3.5 text-base text-gray-900 select-none hover:bg-gray-100 focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 data-popup-open:bg-gray-100">
           <SelectBase.Value className="data-placeholder:opacity-60" />
           <SelectBase.Icon className="flex">
             <IoIosArrowDown />
@@ -50,7 +50,7 @@ const Select = ({ label, options, onValueChange }: SelectProps) => {
                     <SelectBase.ItemIndicator className="col-start-1">
                       <FaCheck className="size-3" />
                     </SelectBase.ItemIndicator>
-                    <SelectBase.ItemText className="col-start-2">
+                    <SelectBase.ItemText className="col-start-2 cursor-pointer">
                       {label}
                     </SelectBase.ItemText>
                   </SelectBase.Item>
