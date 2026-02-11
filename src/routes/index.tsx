@@ -96,7 +96,7 @@ function RouteComponent() {
         <div className="flex w-full flex-row flex-wrap gap-20">
           <div>
             <p className="text-lg font-bold text-gray-800">Classic Accordion</p>
-            <ClassicAccordion items={items} />
+            <ClassicAccordion items={items} variant="primary" />
           </div>
 
           <div>

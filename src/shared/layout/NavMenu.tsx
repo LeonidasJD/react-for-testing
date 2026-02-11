@@ -26,6 +26,9 @@ const NavMenu = () => {
           <TanstackLink variant="primary" href="/skeleton-example/">
             Skeleton Example
           </TanstackLink>
+          <TanstackLink variant="primary" href="/text-example/">
+            Text Example
+          </TanstackLink>
         </nav>
       </div>
     </div>

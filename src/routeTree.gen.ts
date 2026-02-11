@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TextExampleIndexRouteImport } from './routes/text-example/index'
 import { Route as SkeletonExampleIndexRouteImport } from './routes/skeleton-example/index'
 import { Route as ModalExampleIndexRouteImport } from './routes/modal-example/index'
 import { Route as InputsExampleIndexRouteImport } from './routes/inputs-example/index'
@@ -20,6 +21,11 @@ import { Route as AccordionExampleIndexRouteImport } from './routes/accordion-ex
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TextExampleIndexRoute = TextExampleIndexRouteImport.update({
+  id: '/text-example/',
+  path: '/text-example/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SkeletonExampleIndexRoute = SkeletonExampleIndexRouteImport.update({
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/inputs-example': typeof InputsExampleIndexRoute
   '/modal-example': typeof ModalExampleIndexRoute
   '/skeleton-example': typeof SkeletonExampleIndexRoute
+  '/text-example': typeof TextExampleIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +77,7 @@ export interface FileRoutesByTo {
   '/inputs-example': typeof InputsExampleIndexRoute
   '/modal-example': typeof ModalExampleIndexRoute
   '/skeleton-example': typeof SkeletonExampleIndexRoute
+  '/text-example': typeof TextExampleIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/inputs-example/': typeof InputsExampleIndexRoute
   '/modal-example/': typeof ModalExampleIndexRoute
   '/skeleton-example/': typeof SkeletonExampleIndexRoute
+  '/text-example/': typeof TextExampleIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +100,7 @@ export interface FileRouteTypes {
     | '/inputs-example'
     | '/modal-example'
     | '/skeleton-example'
+    | '/text-example'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +110,7 @@ export interface FileRouteTypes {
     | '/inputs-example'
     | '/modal-example'
     | '/skeleton-example'
+    | '/text-example'
   id:
     | '__root__'
     | '/'
@@ -109,6 +120,7 @@ export interface FileRouteTypes {
     | '/inputs-example/'
     | '/modal-example/'
     | '/skeleton-example/'
+    | '/text-example/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,6 +131,7 @@ export interface RootRouteChildren {
   InputsExampleIndexRoute: typeof InputsExampleIndexRoute
   ModalExampleIndexRoute: typeof ModalExampleIndexRoute
   SkeletonExampleIndexRoute: typeof SkeletonExampleIndexRoute
+  TextExampleIndexRoute: typeof TextExampleIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -128,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/text-example/': {
+      id: '/text-example/'
+      path: '/text-example'
+      fullPath: '/text-example'
+      preLoaderRoute: typeof TextExampleIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/skeleton-example/': {
@@ -183,6 +203,7 @@ const rootRouteChildren: RootRouteChildren = {
   InputsExampleIndexRoute: InputsExampleIndexRoute,
   ModalExampleIndexRoute: ModalExampleIndexRoute,
   SkeletonExampleIndexRoute: SkeletonExampleIndexRoute,
+  TextExampleIndexRoute: TextExampleIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
