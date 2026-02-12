@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TextExampleIndexRouteImport } from './routes/text-example/index'
+import { Route as TanstackAiChatIndexRouteImport } from './routes/tanstack-ai-chat/index'
 import { Route as TabExampleIndexRouteImport } from './routes/tab-example/index'
 import { Route as SkeletonExampleIndexRouteImport } from './routes/skeleton-example/index'
 import { Route as SelectExampleIndexRouteImport } from './routes/select-example/index'
@@ -28,6 +29,11 @@ const IndexRoute = IndexRouteImport.update({
 const TextExampleIndexRoute = TextExampleIndexRouteImport.update({
   id: '/text-example/',
   path: '/text-example/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TanstackAiChatIndexRoute = TanstackAiChatIndexRouteImport.update({
+  id: '/tanstack-ai-chat/',
+  path: '/tanstack-ai-chat/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TabExampleIndexRoute = TabExampleIndexRouteImport.update({
@@ -81,6 +87,7 @@ export interface FileRoutesByFullPath {
   '/select-example': typeof SelectExampleIndexRoute
   '/skeleton-example': typeof SkeletonExampleIndexRoute
   '/tab-example': typeof TabExampleIndexRoute
+  '/tanstack-ai-chat': typeof TanstackAiChatIndexRoute
   '/text-example': typeof TextExampleIndexRoute
 }
 export interface FileRoutesByTo {
@@ -93,6 +100,7 @@ export interface FileRoutesByTo {
   '/select-example': typeof SelectExampleIndexRoute
   '/skeleton-example': typeof SkeletonExampleIndexRoute
   '/tab-example': typeof TabExampleIndexRoute
+  '/tanstack-ai-chat': typeof TanstackAiChatIndexRoute
   '/text-example': typeof TextExampleIndexRoute
 }
 export interface FileRoutesById {
@@ -106,6 +114,7 @@ export interface FileRoutesById {
   '/select-example/': typeof SelectExampleIndexRoute
   '/skeleton-example/': typeof SkeletonExampleIndexRoute
   '/tab-example/': typeof TabExampleIndexRoute
+  '/tanstack-ai-chat/': typeof TanstackAiChatIndexRoute
   '/text-example/': typeof TextExampleIndexRoute
 }
 export interface FileRouteTypes {
@@ -120,6 +129,7 @@ export interface FileRouteTypes {
     | '/select-example'
     | '/skeleton-example'
     | '/tab-example'
+    | '/tanstack-ai-chat'
     | '/text-example'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -132,6 +142,7 @@ export interface FileRouteTypes {
     | '/select-example'
     | '/skeleton-example'
     | '/tab-example'
+    | '/tanstack-ai-chat'
     | '/text-example'
   id:
     | '__root__'
@@ -144,6 +155,7 @@ export interface FileRouteTypes {
     | '/select-example/'
     | '/skeleton-example/'
     | '/tab-example/'
+    | '/tanstack-ai-chat/'
     | '/text-example/'
   fileRoutesById: FileRoutesById
 }
@@ -157,6 +169,7 @@ export interface RootRouteChildren {
   SelectExampleIndexRoute: typeof SelectExampleIndexRoute
   SkeletonExampleIndexRoute: typeof SkeletonExampleIndexRoute
   TabExampleIndexRoute: typeof TabExampleIndexRoute
+  TanstackAiChatIndexRoute: typeof TanstackAiChatIndexRoute
   TextExampleIndexRoute: typeof TextExampleIndexRoute
 }
 
@@ -174,6 +187,13 @@ declare module '@tanstack/react-router' {
       path: '/text-example'
       fullPath: '/text-example'
       preLoaderRoute: typeof TextExampleIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tanstack-ai-chat/': {
+      id: '/tanstack-ai-chat/'
+      path: '/tanstack-ai-chat'
+      fullPath: '/tanstack-ai-chat'
+      preLoaderRoute: typeof TanstackAiChatIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tab-example/': {
@@ -245,6 +265,7 @@ const rootRouteChildren: RootRouteChildren = {
   SelectExampleIndexRoute: SelectExampleIndexRoute,
   SkeletonExampleIndexRoute: SkeletonExampleIndexRoute,
   TabExampleIndexRoute: TabExampleIndexRoute,
+  TanstackAiChatIndexRoute: TanstackAiChatIndexRoute,
   TextExampleIndexRoute: TextExampleIndexRoute,
 }
 export const routeTree = rootRouteImport

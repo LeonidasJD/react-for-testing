@@ -35,6 +35,9 @@ const NavMenu = () => {
           <TanstackLink variant="primary" href="/tab-example/">
             Tab Example
           </TanstackLink>
+          <TanstackLink variant="primary" href="/tanstack-ai-chat/">
+            Tanstack AI Chat
+          </TanstackLink>
         </nav>
       </div>
     </div>
