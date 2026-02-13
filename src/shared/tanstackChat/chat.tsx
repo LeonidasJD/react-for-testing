@@ -1,10 +1,12 @@
 import { useChat, fetchServerSentEvents } from "@tanstack/ai-react";
-import Input from "../ui/Input";
 import Button from "../ui/Button";
 import { useForm } from "react-hook-form";
-import { Controller } from "react-hook-form";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { IoMdPerson } from "react-icons/io";
+import { VscRobot } from "react-icons/vsc";
+import Textarea from "../ui/Textarea";
+import { BiLoaderCircle } from "react-icons/bi";
 
 interface FormData {
   message: string;
@@ -15,23 +17,25 @@ export function Chat() {
     connection: fetchServerSentEvents("http://localhost:5000/api/chat"),
   });
 
-  const { handleSubmit, control, reset } = useForm<FormData>({
+  const { handleSubmit, reset, register } = useForm<FormData>({
     defaultValues: {
       message: "",
     },
   });
 
   const onSendMessage = async (data: FormData) => {
+    reset({ message: "" });
+
     try {
       await sendMessage(data.message);
-      reset({ message: "" });
     } catch (error) {
       console.error("Error sending message", error);
+      reset({ message: data.message });
     }
   };
 
   return (
-    <div className="flex h-screen w-full max-w-6xl flex-col rounded-2xl bg-gray-300 md:h-[600px]">
+    <div className="flex h-screen w-full flex-col rounded-2xl bg-gray-300 md:h-[700px]">
       {/* Messages */}
       <div className="flex-1 space-y-4 overflow-y-auto p-4">
         {messages.map((message) => (
@@ -45,11 +49,20 @@ export function Chat() {
               className={`max-w-[85%] rounded-lg p-4 ${
                 message.role === "assistant"
                   ? "bg-white text-gray-900 shadow-md"
-                  : "bg-blue-600 text-white"
+                  : "bg-blue-600 text-[20px] font-bold text-white"
               }`}
             >
               <div className="mb-2 text-xs font-semibold opacity-70">
-                {message.role === "assistant" ? "🤖 Assistant" : "👤 You"}
+                {message.role === "assistant" ? (
+                  <span className="flex items-center gap-2">
+                    <VscRobot color="black" size={20} /> Personal Programming
+                    Assistant
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2">
+                    <IoMdPerson color="white" size={20} /> You
+                  </span>
+                )}
               </div>
               <div>
                 {message.parts.map((part, idx) => {
@@ -89,7 +102,12 @@ export function Chat() {
 
       <form onSubmit={handleSubmit(onSendMessage)} className="border-t p-4">
         <div className="flex gap-2">
-          <Controller
+          <Textarea
+            placeholder="Type a message..."
+            {...register("message")}
+            disabled={isLoading}
+          />
+          {/* <Controller
             control={control}
             name="message"
             render={({ field }) => (
@@ -101,10 +119,10 @@ export function Chat() {
                 disabled={isLoading}
               />
             )}
-          />
+          /> */}
 
           <Button type="submit" disabled={isLoading}>
-            Send
+            {isLoading ? <BiLoaderCircle className="animate-spin" /> : "Send"}
           </Button>
         </div>
       </form>
