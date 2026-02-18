@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ToasterIndexRouteImport } from './routes/toaster/index'
 import { Route as TextExampleIndexRouteImport } from './routes/text-example/index'
 import { Route as TanstackAiChatIndexRouteImport } from './routes/tanstack-ai-chat/index'
 import { Route as TabExampleIndexRouteImport } from './routes/tab-example/index'
@@ -17,6 +18,7 @@ import { Route as SkeletonExampleIndexRouteImport } from './routes/skeleton-exam
 import { Route as SelectExampleIndexRouteImport } from './routes/select-example/index'
 import { Route as ModalExampleIndexRouteImport } from './routes/modal-example/index'
 import { Route as InputsExampleIndexRouteImport } from './routes/inputs-example/index'
+import { Route as DrawerExampleIndexRouteImport } from './routes/drawer-example/index'
 import { Route as ButtonsExampleIndexRouteImport } from './routes/buttons-example/index'
 import { Route as AvatarIndexRouteImport } from './routes/avatar/index'
 import { Route as AccordionExampleIndexRouteImport } from './routes/accordion-example/index'
@@ -24,6 +26,11 @@ import { Route as AccordionExampleIndexRouteImport } from './routes/accordion-ex
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToasterIndexRoute = ToasterIndexRouteImport.update({
+  id: '/toaster/',
+  path: '/toaster/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TextExampleIndexRoute = TextExampleIndexRouteImport.update({
@@ -61,6 +68,11 @@ const InputsExampleIndexRoute = InputsExampleIndexRouteImport.update({
   path: '/inputs-example/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DrawerExampleIndexRoute = DrawerExampleIndexRouteImport.update({
+  id: '/drawer-example/',
+  path: '/drawer-example/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ButtonsExampleIndexRoute = ButtonsExampleIndexRouteImport.update({
   id: '/buttons-example/',
   path: '/buttons-example/',
@@ -82,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/accordion-example': typeof AccordionExampleIndexRoute
   '/avatar': typeof AvatarIndexRoute
   '/buttons-example': typeof ButtonsExampleIndexRoute
+  '/drawer-example': typeof DrawerExampleIndexRoute
   '/inputs-example': typeof InputsExampleIndexRoute
   '/modal-example': typeof ModalExampleIndexRoute
   '/select-example': typeof SelectExampleIndexRoute
@@ -89,12 +102,14 @@ export interface FileRoutesByFullPath {
   '/tab-example': typeof TabExampleIndexRoute
   '/tanstack-ai-chat': typeof TanstackAiChatIndexRoute
   '/text-example': typeof TextExampleIndexRoute
+  '/toaster': typeof ToasterIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/accordion-example': typeof AccordionExampleIndexRoute
   '/avatar': typeof AvatarIndexRoute
   '/buttons-example': typeof ButtonsExampleIndexRoute
+  '/drawer-example': typeof DrawerExampleIndexRoute
   '/inputs-example': typeof InputsExampleIndexRoute
   '/modal-example': typeof ModalExampleIndexRoute
   '/select-example': typeof SelectExampleIndexRoute
@@ -102,6 +117,7 @@ export interface FileRoutesByTo {
   '/tab-example': typeof TabExampleIndexRoute
   '/tanstack-ai-chat': typeof TanstackAiChatIndexRoute
   '/text-example': typeof TextExampleIndexRoute
+  '/toaster': typeof ToasterIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -109,6 +125,7 @@ export interface FileRoutesById {
   '/accordion-example/': typeof AccordionExampleIndexRoute
   '/avatar/': typeof AvatarIndexRoute
   '/buttons-example/': typeof ButtonsExampleIndexRoute
+  '/drawer-example/': typeof DrawerExampleIndexRoute
   '/inputs-example/': typeof InputsExampleIndexRoute
   '/modal-example/': typeof ModalExampleIndexRoute
   '/select-example/': typeof SelectExampleIndexRoute
@@ -116,6 +133,7 @@ export interface FileRoutesById {
   '/tab-example/': typeof TabExampleIndexRoute
   '/tanstack-ai-chat/': typeof TanstackAiChatIndexRoute
   '/text-example/': typeof TextExampleIndexRoute
+  '/toaster/': typeof ToasterIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -124,6 +142,7 @@ export interface FileRouteTypes {
     | '/accordion-example'
     | '/avatar'
     | '/buttons-example'
+    | '/drawer-example'
     | '/inputs-example'
     | '/modal-example'
     | '/select-example'
@@ -131,12 +150,14 @@ export interface FileRouteTypes {
     | '/tab-example'
     | '/tanstack-ai-chat'
     | '/text-example'
+    | '/toaster'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/accordion-example'
     | '/avatar'
     | '/buttons-example'
+    | '/drawer-example'
     | '/inputs-example'
     | '/modal-example'
     | '/select-example'
@@ -144,12 +165,14 @@ export interface FileRouteTypes {
     | '/tab-example'
     | '/tanstack-ai-chat'
     | '/text-example'
+    | '/toaster'
   id:
     | '__root__'
     | '/'
     | '/accordion-example/'
     | '/avatar/'
     | '/buttons-example/'
+    | '/drawer-example/'
     | '/inputs-example/'
     | '/modal-example/'
     | '/select-example/'
@@ -157,6 +180,7 @@ export interface FileRouteTypes {
     | '/tab-example/'
     | '/tanstack-ai-chat/'
     | '/text-example/'
+    | '/toaster/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -164,6 +188,7 @@ export interface RootRouteChildren {
   AccordionExampleIndexRoute: typeof AccordionExampleIndexRoute
   AvatarIndexRoute: typeof AvatarIndexRoute
   ButtonsExampleIndexRoute: typeof ButtonsExampleIndexRoute
+  DrawerExampleIndexRoute: typeof DrawerExampleIndexRoute
   InputsExampleIndexRoute: typeof InputsExampleIndexRoute
   ModalExampleIndexRoute: typeof ModalExampleIndexRoute
   SelectExampleIndexRoute: typeof SelectExampleIndexRoute
@@ -171,6 +196,7 @@ export interface RootRouteChildren {
   TabExampleIndexRoute: typeof TabExampleIndexRoute
   TanstackAiChatIndexRoute: typeof TanstackAiChatIndexRoute
   TextExampleIndexRoute: typeof TextExampleIndexRoute
+  ToasterIndexRoute: typeof ToasterIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -180,6 +206,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/toaster/': {
+      id: '/toaster/'
+      path: '/toaster'
+      fullPath: '/toaster'
+      preLoaderRoute: typeof ToasterIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/text-example/': {
@@ -231,6 +264,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InputsExampleIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/drawer-example/': {
+      id: '/drawer-example/'
+      path: '/drawer-example'
+      fullPath: '/drawer-example'
+      preLoaderRoute: typeof DrawerExampleIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/buttons-example/': {
       id: '/buttons-example/'
       path: '/buttons-example'
@@ -260,6 +300,7 @@ const rootRouteChildren: RootRouteChildren = {
   AccordionExampleIndexRoute: AccordionExampleIndexRoute,
   AvatarIndexRoute: AvatarIndexRoute,
   ButtonsExampleIndexRoute: ButtonsExampleIndexRoute,
+  DrawerExampleIndexRoute: DrawerExampleIndexRoute,
   InputsExampleIndexRoute: InputsExampleIndexRoute,
   ModalExampleIndexRoute: ModalExampleIndexRoute,
   SelectExampleIndexRoute: SelectExampleIndexRoute,
@@ -267,6 +308,7 @@ const rootRouteChildren: RootRouteChildren = {
   TabExampleIndexRoute: TabExampleIndexRoute,
   TanstackAiChatIndexRoute: TanstackAiChatIndexRoute,
   TextExampleIndexRoute: TextExampleIndexRoute,
+  ToasterIndexRoute: ToasterIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

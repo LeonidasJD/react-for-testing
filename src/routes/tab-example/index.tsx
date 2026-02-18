@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { TabRoot, TabList, SingleTab, TabPanel } from "../../shared/ui/Tab";
-
+import Container from "../../shared/layout/Container";
 export const Route = createFileRoute("/tab-example/")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
   return (
-    <div className="flex flex-col items-center p-4">
+    <Container>
       <TabRoot defaultValue="overview" variant="light">
         <TabList variant="light">
           <SingleTab value="overview" variant="light">
@@ -30,6 +30,6 @@ function RouteComponent() {
           <p>Help Content</p>
         </TabPanel>
       </TabRoot>
-    </div>
+    </Container>
   );
 }

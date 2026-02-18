@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import AutocompleteInput from "../../shared/ui/AutocompleteInput";
 import Input from "../../shared/ui/Input";
 import MultipleSelect from "../../shared/ui/MultipleSelect";
+import Container from "../../shared/layout/Container";
 export const Route = createFileRoute("/inputs-example/")({
   component: RouteComponent,
 });
@@ -22,29 +23,31 @@ function RouteComponent() {
     { value: "strawberries", label: "Strawberries" },
   ];
   return (
-    <div className="mt-10 flex flex-row items-center justify-center gap-4">
-      <div>
-        <p className="text-lg font-bold text-gray-800">Autocomplete input</p>
-        <AutocompleteInput items={autocompleteItems} />
-      </div>
+    <Container>
+      <div className="flex flex-row gap-4">
+        <div>
+          <p className="text-lg font-bold text-gray-800">Autocomplete input</p>
+          <AutocompleteInput items={autocompleteItems} />
+        </div>
 
-      <div>
-        <p className="text-lg font-bold text-gray-800">Input</p>
-        <Input label="Name" placeholder="Enter your name" />
-      </div>
+        <div>
+          <p className="text-lg font-bold text-gray-800">Input</p>
+          <Input label="Name" placeholder="Enter your name" />
+        </div>
 
-      <div>
-        <p className="text-lg font-bold text-gray-800">Multiple Select</p>
+        <div>
+          <p className="text-lg font-bold text-gray-800">Multiple Select</p>
 
-        <MultipleSelect
-          label="Select your favorite fruits"
-          options={fruits}
-          placeholder="Select your favorite fruits"
-          onValueChange={(value) => {
-            console.log(value, "value");
-          }}
-        />
+          <MultipleSelect
+            label="Select your favorite fruits"
+            options={fruits}
+            placeholder="Select your favorite fruits"
+            onValueChange={(value) => {
+              console.log(value, "value");
+            }}
+          />
+        </div>
       </div>
-    </div>
+    </Container>
   );
 }

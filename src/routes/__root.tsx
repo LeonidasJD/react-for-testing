@@ -1,6 +1,6 @@
-import * as React from "react";
 import { Outlet, createRootRoute } from "@tanstack/react-router";
 import NavMenu from "../shared/layout/NavMenu";
+import { TanStackDevtools } from "@tanstack/react-devtools";
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -8,9 +8,10 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   return (
-    <React.Fragment>
+    <div className="flex w-full flex-row">
       <NavMenu />
       <Outlet />
-    </React.Fragment>
+      <TanStackDevtools />
+    </div>
   );
 }

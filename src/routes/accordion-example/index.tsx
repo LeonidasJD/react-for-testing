@@ -3,6 +3,7 @@ import ClassicAccordion from "../../shared/ui/ClassicAccordion";
 import { Accordion } from "@base-ui/react";
 import CustomAccordion from "../../shared/ui/CustomAccordion";
 import { FaPlus } from "react-icons/fa";
+import Container from "../../shared/layout/Container";
 export const Route = createFileRoute("/accordion-example/")({
   component: RouteComponent,
 });
@@ -23,7 +24,7 @@ function RouteComponent() {
     },
   ];
   return (
-    <>
+    <Container>
       <div className="w-full max-w-md">
         <p className="text-lg font-bold text-gray-800">Classic Accordion</p>
         <ClassicAccordion variant="primary" items={items} />
@@ -45,6 +46,6 @@ function RouteComponent() {
           </Accordion.Item>
         </CustomAccordion>
       </div>
-    </>
+    </Container>
   );
 }

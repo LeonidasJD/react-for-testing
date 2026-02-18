@@ -3,6 +3,7 @@ import Select from "../../shared/ui/Select";
 import { useForm } from "react-hook-form";
 import { Controller } from "react-hook-form";
 import Button from "../../shared/ui/Button";
+import Container from "../../shared/layout/Container";
 
 export const Route = createFileRoute("/select-example/")({
   component: RouteComponent,
@@ -23,7 +24,7 @@ function RouteComponent() {
     console.log(data);
   };
   return (
-    <div className="mt-10 flex flex-row items-center justify-center gap-4">
+    <Container>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
         <Controller
           control={control}
@@ -42,6 +43,6 @@ function RouteComponent() {
           Submit
         </Button>
       </form>
-    </div>
+    </Container>
   );
 }

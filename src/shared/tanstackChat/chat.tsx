@@ -35,7 +35,7 @@ export function Chat() {
   };
 
   return (
-    <div className="flex h-screen w-full flex-col rounded-2xl bg-gray-300 md:h-[700px]">
+    <div className="flex max-h-[calc(100vh-300px)] w-full flex-col rounded-2xl bg-gray-300 md:h-[700px]">
       {/* Messages */}
       <div className="flex-1 space-y-4 overflow-y-auto p-4">
         {messages.map((message) => (

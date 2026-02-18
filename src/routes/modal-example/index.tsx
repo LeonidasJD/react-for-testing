@@ -1,14 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import AddNewUserModal from "../../testingComponents/addNewUserModal";
 import DeleteUserModal from "../../testingComponents/DeleteUserModal";
-
+import Container from "../../shared/layout/Container";
 export const Route = createFileRoute("/modal-example/")({
   component: RouteComponent,
 });
 
 function RouteComponent() {
   return (
-    <div className="mt-10 flex flex-row items-center justify-center gap-4">
+    <Container>
       <div>
         <p className="text-lg font-bold text-gray-800">Alert Modal</p>
 
@@ -19,6 +19,6 @@ function RouteComponent() {
         <p className="text-lg font-bold text-gray-800">Modal</p>
         <AddNewUserModal />
       </div>
-    </div>
+    </Container>
   );
 }

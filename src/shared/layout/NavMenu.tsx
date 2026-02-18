@@ -2,9 +2,9 @@ import TanstackLink from "../ui/TanstackLink";
 
 const NavMenu = () => {
   return (
-    <div className="flex flex-col items-center bg-gray-200 p-4">
+    <div className="flex h-screen w-full max-w-[15%] flex-col items-start bg-gray-200 p-4">
       <div>
-        <nav className="flex flex-row items-center gap-4">
+        <nav className="flex flex-col items-start gap-4">
           <TanstackLink variant="primary" href="/">
             All examples
           </TanstackLink>
@@ -37,6 +37,12 @@ const NavMenu = () => {
           </TanstackLink>
           <TanstackLink variant="primary" href="/tanstack-ai-chat/">
             Tanstack AI Chat
+          </TanstackLink>
+          <TanstackLink variant="primary" href="/toaster/">
+            Toaster Example
+          </TanstackLink>
+          <TanstackLink variant="primary" href="/drawer-example/">
+            Drawer Example
           </TanstackLink>
         </nav>
       </div>

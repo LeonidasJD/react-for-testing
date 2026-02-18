@@ -3,6 +3,7 @@ import { div } from "framer-motion/client";
 import { useEffect, useState } from "react";
 import SkeletonLoading from "../../shared/ui/Skeleton";
 import Button from "../../shared/ui/Button";
+import Container from "../../shared/layout/Container";
 interface User {
   id: number;
   name: string;
@@ -47,7 +48,7 @@ function RouteComponent() {
     }, 2000);
   }, []);
   return (
-    <div className="mt-10 flex flex-col items-center justify-center gap-4">
+    <Container>
       <div className="w-80">
         <p className="text-lg font-bold text-gray-800">Skeleton Loading</p>
         <div className="mt-4 space-y-4">
@@ -92,6 +93,6 @@ function RouteComponent() {
           </Button>
         </div>
       </div>
-    </div>
+    </Container>
   );
 }
