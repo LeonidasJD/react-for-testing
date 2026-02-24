@@ -34,7 +34,6 @@ function RouteComponent() {
         <Controller
           control={control}
           name="notificationsTop"
-          defaultValue={false}
           render={({ field }) => (
             <Switch
               label="Notifications top"
@@ -47,7 +46,6 @@ function RouteComponent() {
         <Controller
           control={control}
           name="notificationsRight"
-          defaultValue={false}
           render={({ field }) => (
             <Switch
               variant="secondary"
