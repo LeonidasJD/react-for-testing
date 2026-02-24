@@ -22,6 +22,7 @@ import SideDrawer from "../testingComponents/sideDrawer";
 import BottomDrawer from "../testingComponents/bottomDrawer";
 import StackDrawer from "../testingComponents/stackDrawer";
 import ActionSheetDrawer from "../testingComponents/actionSheetDrawer";
+import Switch from "../shared/ui/Switch";
 export const Route = createFileRoute("/")({
   component: RouteComponent,
 });
@@ -323,6 +324,22 @@ function RouteComponent() {
               <StackDrawer />
               <ActionSheetDrawer />
             </div>
+          </div>
+          <div>
+            <p className="text-lg font-bold text-gray-800">Switch</p>
+            <Switch
+              label="Notifications top"
+              position="top"
+              checked={false}
+              onChange={() => {}}
+            />
+            <Switch
+              variant="secondary"
+              label="Notifications right"
+              position="right"
+              checked={false}
+              onChange={() => {}}
+            />
           </div>
         </div>
       </div>

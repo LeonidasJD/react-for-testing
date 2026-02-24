@@ -14,6 +14,7 @@ import { Route as ToasterIndexRouteImport } from './routes/toaster/index'
 import { Route as TextExampleIndexRouteImport } from './routes/text-example/index'
 import { Route as TanstackAiChatIndexRouteImport } from './routes/tanstack-ai-chat/index'
 import { Route as TabExampleIndexRouteImport } from './routes/tab-example/index'
+import { Route as SwitchExampleIndexRouteImport } from './routes/switch-example/index'
 import { Route as SkeletonExampleIndexRouteImport } from './routes/skeleton-example/index'
 import { Route as SelectExampleIndexRouteImport } from './routes/select-example/index'
 import { Route as ModalExampleIndexRouteImport } from './routes/modal-example/index'
@@ -46,6 +47,11 @@ const TanstackAiChatIndexRoute = TanstackAiChatIndexRouteImport.update({
 const TabExampleIndexRoute = TabExampleIndexRouteImport.update({
   id: '/tab-example/',
   path: '/tab-example/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SwitchExampleIndexRoute = SwitchExampleIndexRouteImport.update({
+  id: '/switch-example/',
+  path: '/switch-example/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SkeletonExampleIndexRoute = SkeletonExampleIndexRouteImport.update({
@@ -99,6 +105,7 @@ export interface FileRoutesByFullPath {
   '/modal-example': typeof ModalExampleIndexRoute
   '/select-example': typeof SelectExampleIndexRoute
   '/skeleton-example': typeof SkeletonExampleIndexRoute
+  '/switch-example': typeof SwitchExampleIndexRoute
   '/tab-example': typeof TabExampleIndexRoute
   '/tanstack-ai-chat': typeof TanstackAiChatIndexRoute
   '/text-example': typeof TextExampleIndexRoute
@@ -114,6 +121,7 @@ export interface FileRoutesByTo {
   '/modal-example': typeof ModalExampleIndexRoute
   '/select-example': typeof SelectExampleIndexRoute
   '/skeleton-example': typeof SkeletonExampleIndexRoute
+  '/switch-example': typeof SwitchExampleIndexRoute
   '/tab-example': typeof TabExampleIndexRoute
   '/tanstack-ai-chat': typeof TanstackAiChatIndexRoute
   '/text-example': typeof TextExampleIndexRoute
@@ -130,6 +138,7 @@ export interface FileRoutesById {
   '/modal-example/': typeof ModalExampleIndexRoute
   '/select-example/': typeof SelectExampleIndexRoute
   '/skeleton-example/': typeof SkeletonExampleIndexRoute
+  '/switch-example/': typeof SwitchExampleIndexRoute
   '/tab-example/': typeof TabExampleIndexRoute
   '/tanstack-ai-chat/': typeof TanstackAiChatIndexRoute
   '/text-example/': typeof TextExampleIndexRoute
@@ -147,6 +156,7 @@ export interface FileRouteTypes {
     | '/modal-example'
     | '/select-example'
     | '/skeleton-example'
+    | '/switch-example'
     | '/tab-example'
     | '/tanstack-ai-chat'
     | '/text-example'
@@ -162,6 +172,7 @@ export interface FileRouteTypes {
     | '/modal-example'
     | '/select-example'
     | '/skeleton-example'
+    | '/switch-example'
     | '/tab-example'
     | '/tanstack-ai-chat'
     | '/text-example'
@@ -177,6 +188,7 @@ export interface FileRouteTypes {
     | '/modal-example/'
     | '/select-example/'
     | '/skeleton-example/'
+    | '/switch-example/'
     | '/tab-example/'
     | '/tanstack-ai-chat/'
     | '/text-example/'
@@ -193,6 +205,7 @@ export interface RootRouteChildren {
   ModalExampleIndexRoute: typeof ModalExampleIndexRoute
   SelectExampleIndexRoute: typeof SelectExampleIndexRoute
   SkeletonExampleIndexRoute: typeof SkeletonExampleIndexRoute
+  SwitchExampleIndexRoute: typeof SwitchExampleIndexRoute
   TabExampleIndexRoute: typeof TabExampleIndexRoute
   TanstackAiChatIndexRoute: typeof TanstackAiChatIndexRoute
   TextExampleIndexRoute: typeof TextExampleIndexRoute
@@ -234,6 +247,13 @@ declare module '@tanstack/react-router' {
       path: '/tab-example'
       fullPath: '/tab-example'
       preLoaderRoute: typeof TabExampleIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/switch-example/': {
+      id: '/switch-example/'
+      path: '/switch-example'
+      fullPath: '/switch-example'
+      preLoaderRoute: typeof SwitchExampleIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/skeleton-example/': {
@@ -305,6 +325,7 @@ const rootRouteChildren: RootRouteChildren = {
   ModalExampleIndexRoute: ModalExampleIndexRoute,
   SelectExampleIndexRoute: SelectExampleIndexRoute,
   SkeletonExampleIndexRoute: SkeletonExampleIndexRoute,
+  SwitchExampleIndexRoute: SwitchExampleIndexRoute,
   TabExampleIndexRoute: TabExampleIndexRoute,
   TanstackAiChatIndexRoute: TanstackAiChatIndexRoute,
   TextExampleIndexRoute: TextExampleIndexRoute,

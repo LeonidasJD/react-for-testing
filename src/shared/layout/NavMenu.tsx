@@ -44,6 +44,9 @@ const NavMenu = () => {
           <TanstackLink variant="primary" href="/drawer-example/">
             Drawer Example
           </TanstackLink>
+          <TanstackLink variant="primary" href="/switch-example/">
+            Switch Example
+          </TanstackLink>
         </nav>
       </div>
     </div>
