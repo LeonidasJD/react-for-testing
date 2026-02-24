@@ -45,7 +45,7 @@ export const NumberFieldScrubArea = ({
 }: NumberFieldScrubAreaProps) => {
   return (
     <NumberField.ScrubArea {...props} className={className}>
-      <label {...props} htmlFor={id}>
+      <label {...props} htmlFor={id} className="text-gray-900">
         {label}
       </label>
       {children}

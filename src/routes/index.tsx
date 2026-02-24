@@ -23,6 +23,7 @@ import BottomDrawer from "../testingComponents/bottomDrawer";
 import StackDrawer from "../testingComponents/stackDrawer";
 import ActionSheetDrawer from "../testingComponents/actionSheetDrawer";
 import Switch from "../shared/ui/Switch";
+import NumberCounter from "../testingComponents/numberCounter";
 export const Route = createFileRoute("/")({
   component: RouteComponent,
 });
@@ -340,6 +341,10 @@ function RouteComponent() {
               checked={false}
               onChange={() => {}}
             />
+          </div>
+          <div>
+            <p className="text-lg font-bold text-gray-800">Number Counter</p>
+            <NumberCounter onChange={() => {}} />
           </div>
         </div>
       </div>
