@@ -18,6 +18,10 @@ import Meter from "../shared/ui/Meter";
 import Popover from "../shared/ui/Popover";
 import Text from "../shared/ui/Text";
 import Select from "../shared/ui/Select";
+import SideDrawer from "../testingComponents/sideDrawer";
+import BottomDrawer from "../testingComponents/bottomDrawer";
+import StackDrawer from "../testingComponents/stackDrawer";
+import ActionSheetDrawer from "../testingComponents/actionSheetDrawer";
 export const Route = createFileRoute("/")({
   component: RouteComponent,
 });
@@ -310,6 +314,15 @@ function RouteComponent() {
               options={apples}
               label="Select an apple"
             />
+          </div>
+          <div>
+            <p className="text-lg font-bold text-gray-800">Drawers</p>
+            <div className="flex flex-row gap-4">
+              <SideDrawer />
+              <BottomDrawer />
+              <StackDrawer />
+              <ActionSheetDrawer />
+            </div>
           </div>
         </div>
       </div>
