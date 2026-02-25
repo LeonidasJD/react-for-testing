@@ -18,7 +18,7 @@ const TanstackLink = ({
   return (
     <Link
       activeProps={{
-        className: `${variants} hover:text-red-500 hover:bg-white font-bold  text-white bg-red-500 p-2 rounded-md`,
+        className: `${variants} hover:text-white  font-bold  text-white bg-red-500 p-2 rounded-md`,
       }}
       to={href}
       className={variants}

@@ -1,58 +1,40 @@
 import TanstackLink from "../ui/TanstackLink";
+import Text from "../ui/Text";
 
 const NavMenu = () => {
   return (
     <div className="flex h-screen w-full max-w-[15%] flex-col items-start bg-gray-200 p-4">
-      <div>
+      <div className="flex flex-col items-start gap-6">
+        <div>
+          <Text variant="h4" color="primary">
+            Base UI Examples
+          </Text>
+        </div>
         <nav className="flex flex-col items-start gap-4">
-          <TanstackLink variant="primary" href="/">
-            All examples
-          </TanstackLink>
-          <TanstackLink variant="primary" href="/accordion-example/">
+          <TanstackLink href="/">All examples</TanstackLink>
+          <TanstackLink href="/accordion-example/">
             Accordion Example
           </TanstackLink>
-          <TanstackLink variant="primary" href="/modal-example/">
-            Modal Example
-          </TanstackLink>
-          <TanstackLink variant="primary" href="/inputs-example/">
-            Inputs Example
-          </TanstackLink>
-          <TanstackLink variant="primary" href="/avatar/">
-            Avatar Example
-          </TanstackLink>
-          <TanstackLink variant="primary" href="/buttons-example/">
-            Buttons Example
-          </TanstackLink>
-          <TanstackLink variant="primary" href="/skeleton-example/">
+          <TanstackLink href="/modal-example/">Modal Example</TanstackLink>
+          <TanstackLink href="/inputs-example/">Inputs Example</TanstackLink>
+          <TanstackLink href="/avatar/">Avatar Example</TanstackLink>
+          <TanstackLink href="/buttons-example/">Buttons Example</TanstackLink>
+          <TanstackLink href="/skeleton-example/">
             Skeleton Example
           </TanstackLink>
-          <TanstackLink variant="primary" href="/text-example/">
-            Text Example
-          </TanstackLink>
-          <TanstackLink variant="primary" href="/select-example/">
-            Select Example
-          </TanstackLink>
-          <TanstackLink variant="primary" href="/tab-example/">
-            Tab Example
-          </TanstackLink>
-          <TanstackLink variant="primary" href="/tanstack-ai-chat/">
+          <TanstackLink href="/text-example/">Text Example</TanstackLink>
+          <TanstackLink href="/select-example/">Select Example</TanstackLink>
+          <TanstackLink href="/tab-example/">Tab Example</TanstackLink>
+          <TanstackLink href="/tanstack-ai-chat/">
             Tanstack AI Chat
           </TanstackLink>
-          <TanstackLink variant="primary" href="/toaster/">
-            Toaster Example
-          </TanstackLink>
-          <TanstackLink variant="primary" href="/drawer-example/">
-            Drawer Example
-          </TanstackLink>
-          <TanstackLink variant="primary" href="/switch-example/">
-            Switch Example
-          </TanstackLink>
-          <TanstackLink variant="primary" href="/number-counter-example/">
+          <TanstackLink href="/toaster/">Toaster Example</TanstackLink>
+          <TanstackLink href="/drawer-example/">Drawer Example</TanstackLink>
+          <TanstackLink href="/switch-example/">Switch Example</TanstackLink>
+          <TanstackLink href="/number-counter-example/">
             Number Counter Example
           </TanstackLink>
-          <TanstackLink variant="primary" href="/radio-example/">
-            Radio Example
-          </TanstackLink>
+          <TanstackLink href="/radio-example/">Radio Example</TanstackLink>
         </nav>
       </div>
     </div>
