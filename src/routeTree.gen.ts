@@ -17,6 +17,7 @@ import { Route as TabExampleIndexRouteImport } from './routes/tab-example/index'
 import { Route as SwitchExampleIndexRouteImport } from './routes/switch-example/index'
 import { Route as SkeletonExampleIndexRouteImport } from './routes/skeleton-example/index'
 import { Route as SelectExampleIndexRouteImport } from './routes/select-example/index'
+import { Route as RadioExampleIndexRouteImport } from './routes/radio-example/index'
 import { Route as NumberCounterExampleIndexRouteImport } from './routes/number-counter-example/index'
 import { Route as ModalExampleIndexRouteImport } from './routes/modal-example/index'
 import { Route as InputsExampleIndexRouteImport } from './routes/inputs-example/index'
@@ -65,6 +66,11 @@ const SelectExampleIndexRoute = SelectExampleIndexRouteImport.update({
   path: '/select-example/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RadioExampleIndexRoute = RadioExampleIndexRouteImport.update({
+  id: '/radio-example/',
+  path: '/radio-example/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NumberCounterExampleIndexRoute =
   NumberCounterExampleIndexRouteImport.update({
     id: '/number-counter-example/',
@@ -111,6 +117,7 @@ export interface FileRoutesByFullPath {
   '/inputs-example': typeof InputsExampleIndexRoute
   '/modal-example': typeof ModalExampleIndexRoute
   '/number-counter-example': typeof NumberCounterExampleIndexRoute
+  '/radio-example': typeof RadioExampleIndexRoute
   '/select-example': typeof SelectExampleIndexRoute
   '/skeleton-example': typeof SkeletonExampleIndexRoute
   '/switch-example': typeof SwitchExampleIndexRoute
@@ -128,6 +135,7 @@ export interface FileRoutesByTo {
   '/inputs-example': typeof InputsExampleIndexRoute
   '/modal-example': typeof ModalExampleIndexRoute
   '/number-counter-example': typeof NumberCounterExampleIndexRoute
+  '/radio-example': typeof RadioExampleIndexRoute
   '/select-example': typeof SelectExampleIndexRoute
   '/skeleton-example': typeof SkeletonExampleIndexRoute
   '/switch-example': typeof SwitchExampleIndexRoute
@@ -146,6 +154,7 @@ export interface FileRoutesById {
   '/inputs-example/': typeof InputsExampleIndexRoute
   '/modal-example/': typeof ModalExampleIndexRoute
   '/number-counter-example/': typeof NumberCounterExampleIndexRoute
+  '/radio-example/': typeof RadioExampleIndexRoute
   '/select-example/': typeof SelectExampleIndexRoute
   '/skeleton-example/': typeof SkeletonExampleIndexRoute
   '/switch-example/': typeof SwitchExampleIndexRoute
@@ -165,6 +174,7 @@ export interface FileRouteTypes {
     | '/inputs-example'
     | '/modal-example'
     | '/number-counter-example'
+    | '/radio-example'
     | '/select-example'
     | '/skeleton-example'
     | '/switch-example'
@@ -182,6 +192,7 @@ export interface FileRouteTypes {
     | '/inputs-example'
     | '/modal-example'
     | '/number-counter-example'
+    | '/radio-example'
     | '/select-example'
     | '/skeleton-example'
     | '/switch-example'
@@ -199,6 +210,7 @@ export interface FileRouteTypes {
     | '/inputs-example/'
     | '/modal-example/'
     | '/number-counter-example/'
+    | '/radio-example/'
     | '/select-example/'
     | '/skeleton-example/'
     | '/switch-example/'
@@ -217,6 +229,7 @@ export interface RootRouteChildren {
   InputsExampleIndexRoute: typeof InputsExampleIndexRoute
   ModalExampleIndexRoute: typeof ModalExampleIndexRoute
   NumberCounterExampleIndexRoute: typeof NumberCounterExampleIndexRoute
+  RadioExampleIndexRoute: typeof RadioExampleIndexRoute
   SelectExampleIndexRoute: typeof SelectExampleIndexRoute
   SkeletonExampleIndexRoute: typeof SkeletonExampleIndexRoute
   SwitchExampleIndexRoute: typeof SwitchExampleIndexRoute
@@ -284,6 +297,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SelectExampleIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/radio-example/': {
+      id: '/radio-example/'
+      path: '/radio-example'
+      fullPath: '/radio-example'
+      preLoaderRoute: typeof RadioExampleIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/number-counter-example/': {
       id: '/number-counter-example/'
       path: '/number-counter-example'
@@ -345,6 +365,7 @@ const rootRouteChildren: RootRouteChildren = {
   InputsExampleIndexRoute: InputsExampleIndexRoute,
   ModalExampleIndexRoute: ModalExampleIndexRoute,
   NumberCounterExampleIndexRoute: NumberCounterExampleIndexRoute,
+  RadioExampleIndexRoute: RadioExampleIndexRoute,
   SelectExampleIndexRoute: SelectExampleIndexRoute,
   SkeletonExampleIndexRoute: SkeletonExampleIndexRoute,
   SwitchExampleIndexRoute: SwitchExampleIndexRoute,
