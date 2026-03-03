@@ -21,6 +21,7 @@ import { Route as RadioExampleIndexRouteImport } from './routes/radio-example/in
 import { Route as NumberCounterExampleIndexRouteImport } from './routes/number-counter-example/index'
 import { Route as ModalExampleIndexRouteImport } from './routes/modal-example/index'
 import { Route as InputsExampleIndexRouteImport } from './routes/inputs-example/index'
+import { Route as FieldExampleIndexRouteImport } from './routes/field-example/index'
 import { Route as DrawerExampleIndexRouteImport } from './routes/drawer-example/index'
 import { Route as ButtonsExampleIndexRouteImport } from './routes/buttons-example/index'
 import { Route as AvatarIndexRouteImport } from './routes/avatar/index'
@@ -87,6 +88,11 @@ const InputsExampleIndexRoute = InputsExampleIndexRouteImport.update({
   path: '/inputs-example/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FieldExampleIndexRoute = FieldExampleIndexRouteImport.update({
+  id: '/field-example/',
+  path: '/field-example/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DrawerExampleIndexRoute = DrawerExampleIndexRouteImport.update({
   id: '/drawer-example/',
   path: '/drawer-example/',
@@ -114,6 +120,7 @@ export interface FileRoutesByFullPath {
   '/avatar': typeof AvatarIndexRoute
   '/buttons-example': typeof ButtonsExampleIndexRoute
   '/drawer-example': typeof DrawerExampleIndexRoute
+  '/field-example': typeof FieldExampleIndexRoute
   '/inputs-example': typeof InputsExampleIndexRoute
   '/modal-example': typeof ModalExampleIndexRoute
   '/number-counter-example': typeof NumberCounterExampleIndexRoute
@@ -132,6 +139,7 @@ export interface FileRoutesByTo {
   '/avatar': typeof AvatarIndexRoute
   '/buttons-example': typeof ButtonsExampleIndexRoute
   '/drawer-example': typeof DrawerExampleIndexRoute
+  '/field-example': typeof FieldExampleIndexRoute
   '/inputs-example': typeof InputsExampleIndexRoute
   '/modal-example': typeof ModalExampleIndexRoute
   '/number-counter-example': typeof NumberCounterExampleIndexRoute
@@ -151,6 +159,7 @@ export interface FileRoutesById {
   '/avatar/': typeof AvatarIndexRoute
   '/buttons-example/': typeof ButtonsExampleIndexRoute
   '/drawer-example/': typeof DrawerExampleIndexRoute
+  '/field-example/': typeof FieldExampleIndexRoute
   '/inputs-example/': typeof InputsExampleIndexRoute
   '/modal-example/': typeof ModalExampleIndexRoute
   '/number-counter-example/': typeof NumberCounterExampleIndexRoute
@@ -171,6 +180,7 @@ export interface FileRouteTypes {
     | '/avatar'
     | '/buttons-example'
     | '/drawer-example'
+    | '/field-example'
     | '/inputs-example'
     | '/modal-example'
     | '/number-counter-example'
@@ -189,6 +199,7 @@ export interface FileRouteTypes {
     | '/avatar'
     | '/buttons-example'
     | '/drawer-example'
+    | '/field-example'
     | '/inputs-example'
     | '/modal-example'
     | '/number-counter-example'
@@ -207,6 +218,7 @@ export interface FileRouteTypes {
     | '/avatar/'
     | '/buttons-example/'
     | '/drawer-example/'
+    | '/field-example/'
     | '/inputs-example/'
     | '/modal-example/'
     | '/number-counter-example/'
@@ -226,6 +238,7 @@ export interface RootRouteChildren {
   AvatarIndexRoute: typeof AvatarIndexRoute
   ButtonsExampleIndexRoute: typeof ButtonsExampleIndexRoute
   DrawerExampleIndexRoute: typeof DrawerExampleIndexRoute
+  FieldExampleIndexRoute: typeof FieldExampleIndexRoute
   InputsExampleIndexRoute: typeof InputsExampleIndexRoute
   ModalExampleIndexRoute: typeof ModalExampleIndexRoute
   NumberCounterExampleIndexRoute: typeof NumberCounterExampleIndexRoute
@@ -325,6 +338,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InputsExampleIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/field-example/': {
+      id: '/field-example/'
+      path: '/field-example'
+      fullPath: '/field-example'
+      preLoaderRoute: typeof FieldExampleIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/drawer-example/': {
       id: '/drawer-example/'
       path: '/drawer-example'
@@ -362,6 +382,7 @@ const rootRouteChildren: RootRouteChildren = {
   AvatarIndexRoute: AvatarIndexRoute,
   ButtonsExampleIndexRoute: ButtonsExampleIndexRoute,
   DrawerExampleIndexRoute: DrawerExampleIndexRoute,
+  FieldExampleIndexRoute: FieldExampleIndexRoute,
   InputsExampleIndexRoute: InputsExampleIndexRoute,
   ModalExampleIndexRoute: ModalExampleIndexRoute,
   NumberCounterExampleIndexRoute: NumberCounterExampleIndexRoute,

@@ -12,11 +12,15 @@ import { useForm } from "react-hook-form";
 import AutocompleteInput from "../shared/ui/AutocompleteInput";
 import Checkbox from "../shared/ui/Checkbox";
 import { Controller } from "react-hook-form";
+import { useRef } from "react";
 const AddNewUserModal = () => {
-  const { register, handleSubmit, control } = useForm();
+  const { register, handleSubmit, control, reset } = useForm();
+  const cancelButtonRef = useRef<HTMLButtonElement>(null);
 
   const onSubmit = (data: any) => {
     console.log(data);
+    cancelButtonRef.current?.click();
+    reset();
   };
   return (
     <Modal>
@@ -60,7 +64,7 @@ const AddNewUserModal = () => {
           />
         </form>
         <ModalFooter>
-          <ModalClose>Cancel</ModalClose>
+          <ModalClose ref={cancelButtonRef}>Cancel</ModalClose>
           <ModalAction type="submit" formId="addNewUserForm">
             Submit
           </ModalAction>
