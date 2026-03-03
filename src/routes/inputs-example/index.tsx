@@ -3,6 +3,8 @@ import AutocompleteInput from "../../shared/ui/AutocompleteInput";
 import Input from "../../shared/ui/Input";
 import MultipleSelect from "../../shared/ui/MultipleSelect";
 import Container from "../../shared/layout/Container";
+import { useForm } from "react-hook-form";
+import Button from "../../shared/ui/Button";
 export const Route = createFileRoute("/inputs-example/")({
   component: RouteComponent,
 });
@@ -22,31 +24,56 @@ function RouteComponent() {
     { value: "banana", label: "Banana" },
     { value: "strawberries", label: "Strawberries" },
   ];
+
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
   return (
     <Container>
-      <div className="flex flex-row gap-4">
-        <div>
-          <p className="text-lg font-bold text-gray-800">Autocomplete input</p>
-          <AutocompleteInput items={autocompleteItems} />
-        </div>
+      <div>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-row gap-4"
+          action=""
+        >
+          <div>
+            <p className="text-lg font-bold text-gray-800">
+              Autocomplete input
+            </p>
+            <AutocompleteInput
+              items={autocompleteItems}
+              {...register("feature")}
+            />
+          </div>
 
-        <div>
-          <p className="text-lg font-bold text-gray-800">Input</p>
-          <Input label="Name" placeholder="Enter your name" />
-        </div>
+          <div>
+            <p className="text-lg font-bold text-gray-800">Input</p>
+            <Input
+              {...register("name")}
+              label="Name"
+              placeholder="Enter your name"
+            />
+          </div>
 
-        <div>
-          <p className="text-lg font-bold text-gray-800">Multiple Select</p>
+          <div>
+            <p className="text-lg font-bold text-gray-800">Multiple Select</p>
 
-          <MultipleSelect
-            label="Select your favorite fruits"
-            options={fruits}
-            placeholder="Select your favorite fruits"
-            onValueChange={(value) => {
-              console.log(value, "value");
-            }}
-          />
-        </div>
+            <MultipleSelect
+              {...register("favoriteFruits")}
+              label="Select your favorite fruits"
+              options={fruits}
+              placeholder="Select your favorite fruits"
+              onValueChange={(value) => {
+                console.log(value, "value");
+              }}
+            />
+          </div>
+          <Button type="submit" variant="primary">
+            Submit
+          </Button>
+        </form>
       </div>
     </Container>
   );
