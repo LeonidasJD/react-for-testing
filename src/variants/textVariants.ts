@@ -10,6 +10,7 @@ export const textVariants = tv({
       h4: "text-xl md:text-2xl leading-snug",
       base: "text-base leading-relaxed",
       caption: "text-sm leading-relaxed",
+      error: "text-sm",
     },
     weight: {
       light: "font-light",

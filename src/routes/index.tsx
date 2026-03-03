@@ -10,8 +10,7 @@ import AutocompleteInput from "../shared/ui/AutocompleteInput";
 import AvatarImage from "../shared/ui/Avatar";
 import Button from "../shared/ui/Button";
 import SkeletonLoading from "../shared/ui/Skeleton";
-import Checkbox from "../shared/ui/Checkbox";
-import CheckboxGroup from "../shared/ui/CheckboxGroup";
+
 import MultipleSelect from "../shared/ui/MultipleSelect";
 import Input from "../shared/ui/Input";
 import Meter from "../shared/ui/Meter";
@@ -238,32 +237,6 @@ function RouteComponent() {
                 Refresh Data
               </Button>
             </div>
-          </div>
-
-          <div>
-            <p className="text-lg font-bold text-gray-800">Checkbox</p>
-            <Checkbox
-              label="Remember me"
-              checked={true}
-              onChange={(value) => {
-                console.log(value, "value");
-              }}
-            />
-          </div>
-
-          <div>
-            <p className="text-lg font-bold text-gray-800">Checkbox Group</p>
-            <CheckboxGroup
-              onValueChange={(value) => {
-                console.log(value, "value");
-              }}
-              mainLabel="Select your favorite fruits"
-              options={[
-                { value: "apple", label: "Apple" },
-                { value: "banana", label: "Banana" },
-                { value: "strawberries", label: "Strawberries" },
-              ]}
-            />
           </div>
 
           <div>

@@ -23,6 +23,7 @@ import { Route as ModalExampleIndexRouteImport } from './routes/modal-example/in
 import { Route as InputsExampleIndexRouteImport } from './routes/inputs-example/index'
 import { Route as FieldExampleIndexRouteImport } from './routes/field-example/index'
 import { Route as DrawerExampleIndexRouteImport } from './routes/drawer-example/index'
+import { Route as CheckboxExampleIndexRouteImport } from './routes/checkbox-example/index'
 import { Route as ButtonsExampleIndexRouteImport } from './routes/buttons-example/index'
 import { Route as AvatarIndexRouteImport } from './routes/avatar/index'
 import { Route as AccordionExampleIndexRouteImport } from './routes/accordion-example/index'
@@ -98,6 +99,11 @@ const DrawerExampleIndexRoute = DrawerExampleIndexRouteImport.update({
   path: '/drawer-example/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CheckboxExampleIndexRoute = CheckboxExampleIndexRouteImport.update({
+  id: '/checkbox-example/',
+  path: '/checkbox-example/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ButtonsExampleIndexRoute = ButtonsExampleIndexRouteImport.update({
   id: '/buttons-example/',
   path: '/buttons-example/',
@@ -119,6 +125,7 @@ export interface FileRoutesByFullPath {
   '/accordion-example': typeof AccordionExampleIndexRoute
   '/avatar': typeof AvatarIndexRoute
   '/buttons-example': typeof ButtonsExampleIndexRoute
+  '/checkbox-example': typeof CheckboxExampleIndexRoute
   '/drawer-example': typeof DrawerExampleIndexRoute
   '/field-example': typeof FieldExampleIndexRoute
   '/inputs-example': typeof InputsExampleIndexRoute
@@ -138,6 +145,7 @@ export interface FileRoutesByTo {
   '/accordion-example': typeof AccordionExampleIndexRoute
   '/avatar': typeof AvatarIndexRoute
   '/buttons-example': typeof ButtonsExampleIndexRoute
+  '/checkbox-example': typeof CheckboxExampleIndexRoute
   '/drawer-example': typeof DrawerExampleIndexRoute
   '/field-example': typeof FieldExampleIndexRoute
   '/inputs-example': typeof InputsExampleIndexRoute
@@ -158,6 +166,7 @@ export interface FileRoutesById {
   '/accordion-example/': typeof AccordionExampleIndexRoute
   '/avatar/': typeof AvatarIndexRoute
   '/buttons-example/': typeof ButtonsExampleIndexRoute
+  '/checkbox-example/': typeof CheckboxExampleIndexRoute
   '/drawer-example/': typeof DrawerExampleIndexRoute
   '/field-example/': typeof FieldExampleIndexRoute
   '/inputs-example/': typeof InputsExampleIndexRoute
@@ -179,6 +188,7 @@ export interface FileRouteTypes {
     | '/accordion-example'
     | '/avatar'
     | '/buttons-example'
+    | '/checkbox-example'
     | '/drawer-example'
     | '/field-example'
     | '/inputs-example'
@@ -198,6 +208,7 @@ export interface FileRouteTypes {
     | '/accordion-example'
     | '/avatar'
     | '/buttons-example'
+    | '/checkbox-example'
     | '/drawer-example'
     | '/field-example'
     | '/inputs-example'
@@ -217,6 +228,7 @@ export interface FileRouteTypes {
     | '/accordion-example/'
     | '/avatar/'
     | '/buttons-example/'
+    | '/checkbox-example/'
     | '/drawer-example/'
     | '/field-example/'
     | '/inputs-example/'
@@ -237,6 +249,7 @@ export interface RootRouteChildren {
   AccordionExampleIndexRoute: typeof AccordionExampleIndexRoute
   AvatarIndexRoute: typeof AvatarIndexRoute
   ButtonsExampleIndexRoute: typeof ButtonsExampleIndexRoute
+  CheckboxExampleIndexRoute: typeof CheckboxExampleIndexRoute
   DrawerExampleIndexRoute: typeof DrawerExampleIndexRoute
   FieldExampleIndexRoute: typeof FieldExampleIndexRoute
   InputsExampleIndexRoute: typeof InputsExampleIndexRoute
@@ -352,6 +365,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DrawerExampleIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/checkbox-example/': {
+      id: '/checkbox-example/'
+      path: '/checkbox-example'
+      fullPath: '/checkbox-example'
+      preLoaderRoute: typeof CheckboxExampleIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/buttons-example/': {
       id: '/buttons-example/'
       path: '/buttons-example'
@@ -381,6 +401,7 @@ const rootRouteChildren: RootRouteChildren = {
   AccordionExampleIndexRoute: AccordionExampleIndexRoute,
   AvatarIndexRoute: AvatarIndexRoute,
   ButtonsExampleIndexRoute: ButtonsExampleIndexRoute,
+  CheckboxExampleIndexRoute: CheckboxExampleIndexRoute,
   DrawerExampleIndexRoute: DrawerExampleIndexRoute,
   FieldExampleIndexRoute: FieldExampleIndexRoute,
   InputsExampleIndexRoute: InputsExampleIndexRoute,

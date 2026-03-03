@@ -36,6 +36,9 @@ const NavMenu = () => {
           </TanstackLink>
           <TanstackLink href="/radio-example/">Radio Example</TanstackLink>
           <TanstackLink href="/field-example/">Field Example</TanstackLink>
+          <TanstackLink href="/checkbox-example/">
+            Checkbox Example
+          </TanstackLink>
         </nav>
       </div>
     </div>

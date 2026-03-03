@@ -10,8 +10,6 @@ import {
 import Input from "../shared/ui/Input";
 import { useForm } from "react-hook-form";
 import AutocompleteInput from "../shared/ui/AutocompleteInput";
-import Checkbox from "../shared/ui/Checkbox";
-import { Controller } from "react-hook-form";
 import { useRef } from "react";
 const AddNewUserModal = () => {
   const { register, handleSubmit, control, reset } = useForm();
@@ -49,18 +47,6 @@ const AddNewUserModal = () => {
             label="Role"
             placeholder="Select role"
             {...register("role")}
-          />
-          <Controller
-            control={control}
-            name="isActive"
-            defaultValue={false}
-            render={({ field }) => (
-              <Checkbox
-                checked={field.value}
-                onChange={field.onChange}
-                label="Is Active"
-              />
-            )}
           />
         </form>
         <ModalFooter>
