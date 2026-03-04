@@ -1,9 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import Select from "../../shared/ui/Select";
 import { useForm } from "react-hook-form";
 import { Controller } from "react-hook-form";
 import Button from "../../shared/ui/Button";
 import Container from "../../shared/layout/Container";
+import { Selector } from "../../shared/ui/Select";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const schema = z.object({
+  apple: z.string().min(1),
+});
 
 export const Route = createFileRoute("/select-example/")({
   component: RouteComponent,
@@ -18,10 +24,20 @@ const apples = [
 ];
 
 function RouteComponent() {
-  const { control, handleSubmit } = useForm();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      apple: "",
+    },
+  });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: z.infer<typeof schema>) => {
     console.log(data);
+    alert(JSON.stringify(data));
   };
   return (
     <Container>
@@ -30,12 +46,13 @@ function RouteComponent() {
           control={control}
           name="apple"
           render={({ field }) => (
-            <Select
-              label="Select an apple"
-              options={apples}
-              onValueChange={(value) => {
-                field.onChange(value);
-              }}
+            <Selector
+              value={field.value}
+              errorMessage={errors.apple?.message}
+              onValueChange={(value) => field.onChange(value)}
+              fieldLabel="Apples"
+              items={apples}
+              placeholder="Select an apple"
             />
           )}
         />

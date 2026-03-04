@@ -16,7 +16,6 @@ import Input from "../shared/ui/Input";
 import Meter from "../shared/ui/Meter";
 import Popover from "../shared/ui/Popover";
 import Text from "../shared/ui/Text";
-import Select from "../shared/ui/Select";
 import SideDrawer from "../testingComponents/sideDrawer";
 import BottomDrawer from "../testingComponents/bottomDrawer";
 import StackDrawer from "../testingComponents/stackDrawer";
@@ -27,6 +26,7 @@ import RadioGroupField from "../shared/ui/RadioGroup";
 import { Controller } from "react-hook-form";
 import { RadioGroup, RadioIndicator, RadioRoot } from "../shared/ui/Radio";
 import { useForm } from "react-hook-form";
+import { Selector } from "../shared/ui/Select";
 export const Route = createFileRoute("/")({
   component: RouteComponent,
 });
@@ -306,12 +306,10 @@ function RouteComponent() {
 
           <div>
             <p className="text-lg font-bold text-gray-800">Select</p>
-            <Select
-              onValueChange={(value) => {
-                console.log(value);
-              }}
-              options={apples}
-              label="Select an apple"
+            <Selector
+              fieldLabel="Apples"
+              items={apples}
+              placeholder="Select an apple"
             />
           </div>
           <div>
