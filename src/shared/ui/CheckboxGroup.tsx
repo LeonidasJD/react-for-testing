@@ -8,7 +8,6 @@ interface CheckboxGroupProps {
   }[];
   value?: string[];
   error?: string;
-  defaultValues?: string[];
   onValueChange?: (value: string[]) => void;
 }
 
@@ -16,15 +15,10 @@ const CheckboxGroupField = ({
   items,
   value,
   error,
-  defaultValues,
   onValueChange,
 }: CheckboxGroupProps) => {
-  const isControlled = value !== undefined;
   return (
-    <CheckboxGroup
-      onValueChange={onValueChange}
-      {...(isControlled ? { value } : { defaultValue: defaultValues })}
-    >
+    <CheckboxGroup onValueChange={onValueChange} value={value}>
       {items.map((item) => (
         <SingleCheckbox
           error={error}

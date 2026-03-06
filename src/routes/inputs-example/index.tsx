@@ -1,12 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
-import AutocompleteInput from "../../shared/ui/AutocompleteInput";
+
 import Input from "../../shared/ui/Input";
-import MultipleSelect from "../../shared/ui/MultipleSelect";
+import { MultipleSelect } from "../../shared/ui/MultipleSelect";
 import Container from "../../shared/layout/Container";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import Button from "../../shared/ui/Button";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ClassicAutocomplete } from "../../shared/ui/AutocompleteInput";
+
 export const Route = createFileRoute("/inputs-example/")({
   component: RouteComponent,
+});
+
+const schema = z.object({
+  name: z.string().min(1, { message: "Name is required" }),
+  feature: z.string().min(1, { message: "Feature is required" }),
+  favoriteFruits: z
+    .array(z.string())
+    .min(1, { message: "Favorite fruits is required" }),
 });
 
 function RouteComponent() {
@@ -19,16 +31,37 @@ function RouteComponent() {
     { id: "t6", value: "mobile" },
   ];
 
-  const fruits = [
-    { value: "apple", label: "Apple" },
-    { value: "banana", label: "Banana" },
-    { value: "strawberries", label: "Strawberries" },
+  const langs = [
+    { value: "js", label: "JavaScript" },
+    { value: "ts", label: "TypeScript" },
+    { value: "py", label: "Python" },
+    { value: "java", label: "Java" },
+    { value: "cpp", label: "C++" },
+    { value: "cs", label: "C#" },
+    { value: "php", label: "PHP" },
+    { value: "ruby", label: "Ruby" },
+    { value: "go", label: "Go" },
+    { value: "rust", label: "Rust" },
+    { value: "swift", label: "Swift" },
   ];
 
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(schema),
+    defaultValues: {
+      name: "",
+      feature: "",
+      favoriteFruits: [],
+    },
+  });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: z.infer<typeof schema>) => {
     console.log(data);
+    alert(JSON.stringify(data));
   };
   return (
     <Container>
@@ -42,9 +75,20 @@ function RouteComponent() {
             <p className="text-lg font-bold text-gray-800">
               Autocomplete input
             </p>
-            <AutocompleteInput
-              items={autocompleteItems}
-              {...register("feature")}
+            <Controller
+              control={control}
+              name="feature"
+              render={({ field }) => (
+                <ClassicAutocomplete
+                  value={field.value}
+                  onValueChange={field.onChange}
+                  label="Select a tag"
+                  placeholder="Search for a tag"
+                  noTagsMessage="No tags found"
+                  tags={autocompleteItems}
+                  errorMessage={errors.feature?.message}
+                />
+              )}
             />
           </div>
 
@@ -54,6 +98,7 @@ function RouteComponent() {
               {...register("name")}
               label="Name"
               placeholder="Enter your name"
+              error={errors.name?.message}
             />
           </div>
 
@@ -61,13 +106,10 @@ function RouteComponent() {
             <p className="text-lg font-bold text-gray-800">Multiple Select</p>
 
             <MultipleSelect
-              {...register("favoriteFruits")}
-              label="Select your favorite fruits"
-              options={fruits}
-              placeholder="Select your favorite fruits"
-              onValueChange={(value) => {
-                console.log(value, "value");
-              }}
+              items={langs}
+              label="Select a language"
+              placeholder="Select a language"
+              noOptionsMessage="No languages found"
             />
           </div>
           <Button type="submit" variant="primary">

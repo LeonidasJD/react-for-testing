@@ -7,22 +7,20 @@ interface CheckboxRootProps {
   children: React.ReactNode;
   value: string;
   checked?: boolean;
-  defaultChecked?: boolean;
   onChange?: (checked: boolean) => void;
 }
 export const CheckboxRoot = ({
   children,
   value,
   checked,
-  defaultChecked,
+
   onChange,
 }: CheckboxRootProps) => {
-  const isControlled = checked !== undefined;
   return (
     <Checkbox.Root
       onCheckedChange={(newChecked) => onChange?.(newChecked)}
       value={value}
-      {...(isControlled ? { checked } : { defaultChecked })}
+      checked={checked}
       className="flex size-5 items-center justify-center rounded-sm focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-blue-800 data-checked:bg-gray-900 data-unchecked:border data-unchecked:border-gray-300"
     >
       {children}
@@ -54,18 +52,12 @@ export const SingleCheckbox = ({
   value,
   error,
   checked,
-  defaultChecked,
   onChange,
 }: SingleCheckboxProps) => {
   return (
     <div className="flex flex-col gap-2">
       <label className="flex items-center gap-2 text-base text-gray-900">
-        <CheckboxRoot
-          value={value ?? ""}
-          checked={checked}
-          defaultChecked={defaultChecked}
-          onChange={onChange}
-        >
+        <CheckboxRoot value={value ?? ""} checked={checked} onChange={onChange}>
           <CheckboxIndicator>
             <IoIosCheckmark className="size-6" />
           </CheckboxIndicator>

@@ -90,12 +90,12 @@ function RouteComponent() {
             <Controller
               control={control2}
               name="favoriteFruits"
-              defaultValue={["apple"]}
+              defaultValue={["apple", "banana"]}
               render={({ field }) => (
                 <CheckboxGroupField
                   error={errors2.favoriteFruits?.message}
                   items={items}
-                  defaultValues={field.value}
+                  value={field.value}
                   onValueChange={field.onChange}
                 />
               )}

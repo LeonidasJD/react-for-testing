@@ -9,7 +9,7 @@ import {
 } from "../shared/ui/Modal";
 import Input from "../shared/ui/Input";
 import { useForm } from "react-hook-form";
-import AutocompleteInput from "../shared/ui/AutocompleteInput";
+import { ClassicAutocomplete } from "../shared/ui/AutocompleteInput";
 import { useRef } from "react";
 const AddNewUserModal = () => {
   const { register, handleSubmit, control, reset } = useForm();
@@ -42,10 +42,15 @@ const AddNewUserModal = () => {
             type="email"
             {...register("email")}
           />
-          <AutocompleteInput
-            items={[{ value: "Milan" }, { value: "Ana" }, { value: "Marko" }]}
+          <ClassicAutocomplete
+            tags={[
+              { id: "1", value: "Milan" },
+              { id: "2", value: "Ana" },
+              { id: "3", value: "Marko" },
+            ]}
             label="Role"
             placeholder="Select role"
+            noTagsMessage="No roles found"
             {...register("role")}
           />
         </form>

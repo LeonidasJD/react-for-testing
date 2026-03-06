@@ -1,77 +1,144 @@
 import { Autocomplete } from "@base-ui/react/autocomplete";
-import { forwardRef } from "react";
-
-interface AutocompleteInputProps {
-  items: AutocompleteItem[];
-  label?: string;
-  placeholder?: string;
-  onValueChange?: (value: string) => void;
-  error?: string;
-  disabled?: boolean;
-}
-
-interface AutocompleteItem {
+import Text from "./Text";
+interface Tag {
+  id: string;
   value: string;
 }
 
-const AutocompleteInput = forwardRef<HTMLInputElement, AutocompleteInputProps>(
-  (
-    {
-      items,
-      label = "Autocomplete Input",
-      placeholder = "Search",
-      onValueChange,
-      error,
-      disabled = false,
-      ...rest
-    },
-    ref,
-  ) => {
-    return (
-      <Autocomplete.Root
-        items={items}
-        onValueChange={onValueChange}
-        disabled={disabled}
-      >
-        <label className="flex flex-col gap-1 font-medium text-gray-900">
-          {label}
-          <Autocomplete.Input
-            ref={ref}
-            {...rest}
-            placeholder={placeholder}
-            className={`m-0 box-border h-10 w-50 rounded-md border-2 bg-amber-50 pl-2 text-base transition-colors outline-none ${
-              error
-                ? "border-red-500 focus:border-red-600"
-                : "border-gray-300 focus:border-blue-500"
-            } ${disabled ? "cursor-not-allowed opacity-50" : ""}`}
-          />
-        </label>
-        {error && (
-          <p className="mt-1 text-xs font-medium text-red-500">{error}</p>
-        )}
-        <Autocomplete.Portal>
-          <Autocomplete.Positioner className="outline-none">
-            <Autocomplete.Popup className="box-border w-full rounded-md border border-gray-200 bg-white text-gray-900 shadow-lg">
-              <Autocomplete.Empty className="box-border w-full min-w-50 p-4 text-[0.925rem] leading-4 text-gray-600 empty:hidden">
-                No tags found.
-              </Autocomplete.Empty>
-              <Autocomplete.List className="box-border max-h-60 w-50 scroll-p-0.5 overflow-y-auto overscroll-contain p-2 outline-0 data-empty:p-0">
-                {(tag: AutocompleteItem) => (
-                  <Autocomplete.Item
-                    key={tag.value}
-                    value={tag}
-                    className="relative box-border flex w-full cursor-pointer rounded-md px-2 py-2 text-base text-gray-900 outline-0 transition-colors hover:bg-gray-100 data-highlighted:bg-blue-50 data-highlighted:text-blue-900"
-                  >
-                    {tag.value}
-                  </Autocomplete.Item>
-                )}
-              </Autocomplete.List>
-            </Autocomplete.Popup>
-          </Autocomplete.Positioner>
-        </Autocomplete.Portal>
-      </Autocomplete.Root>
-    );
-  },
-);
+interface AutocompleteRootProps {
+  children: React.ReactNode;
+  tags: Tag[];
+  label: string;
+  placeholder: string;
+  onValueChange: (value: string) => void;
+  value: string;
+}
+export const AutocompleteRoot = ({
+  children,
+  tags,
+  label,
+  placeholder,
+  onValueChange,
+  value,
+}: AutocompleteRootProps) => {
+  return (
+    <Autocomplete.Root items={tags} onValueChange={onValueChange} value={value}>
+      <label className="flex flex-col gap-1 text-sm leading-5 font-medium text-gray-900">
+        {label}
+        <Autocomplete.Input
+          placeholder={placeholder}
+          className="h-10 w-[16rem] rounded-md border border-gray-200 bg-[canvas] pl-3.5 text-base font-normal text-gray-900 focus:outline focus:outline-2 focus:-outline-offset-1 focus:outline-blue-800 md:w-[20rem]"
+        />
+      </label>
+      {children}
+    </Autocomplete.Root>
+  );
+};
 
-export default AutocompleteInput;
+interface AutocompletePortalProps {
+  children: React.ReactNode;
+}
+export const AutocompletePortal = ({ children }: AutocompletePortalProps) => {
+  return <Autocomplete.Portal>{children}</Autocomplete.Portal>;
+};
+
+interface AutocompletePositionerProps {
+  children: React.ReactNode;
+}
+export const AutocompletePositioner = ({
+  children,
+}: AutocompletePositionerProps) => {
+  return (
+    <Autocomplete.Positioner className="outline-none" sideOffset={4}>
+      {children}
+    </Autocomplete.Positioner>
+  );
+};
+
+interface AutocompletePopupProps {
+  children: React.ReactNode;
+}
+export const AutocompletePopup = ({ children }: AutocompletePopupProps) => {
+  return (
+    <Autocomplete.Popup className="max-h-92 w-(--anchor-width) max-w-(--available-width) rounded-md bg-[canvas] text-gray-900 shadow-lg shadow-gray-200 outline-1 outline-gray-200 dark:shadow-none dark:-outline-offset-1 dark:outline-gray-300">
+      {children}
+    </Autocomplete.Popup>
+  );
+};
+
+interface AutocompleteEmptyProps {
+  children: React.ReactNode;
+}
+export const AutocompleteEmpty = ({ children }: AutocompleteEmptyProps) => {
+  return (
+    <Autocomplete.Empty className="p-4 text-[0.925rem] leading-4 text-gray-600 empty:m-0 empty:p-0">
+      {children}
+    </Autocomplete.Empty>
+  );
+};
+
+export const AutocompleteList = () => {
+  return (
+    <Autocomplete.List className="max-h-[min(23rem,var(--available-height))] scroll-py-2 overflow-y-auto overscroll-contain py-2 outline-0 data-empty:p-0">
+      {(tag: Tag) => <AutocompleteItem tag={tag} />}
+    </Autocomplete.List>
+  );
+};
+
+interface AutocompleteItemProps {
+  tag: Tag;
+}
+export const AutocompleteItem = ({ tag }: AutocompleteItemProps) => {
+  return (
+    <Autocomplete.Item
+      key={tag.id}
+      className="flex cursor-default items-center gap-2 py-2 pr-8 pl-4 text-base leading-4 outline-none select-none data-[highlighted]:relative data-[highlighted]:z-0 data-[highlighted]:text-gray-50 data-[highlighted]:before:absolute data-[highlighted]:before:inset-x-2 data-[highlighted]:before:inset-y-0 data-[highlighted]:before:z-[-1] data-[highlighted]:before:rounded-sm data-[highlighted]:before:bg-gray-900"
+      value={tag}
+    >
+      {tag.value}
+    </Autocomplete.Item>
+  );
+};
+
+interface ClassicAutocompleteProps {
+  tags: Tag[];
+  label: string;
+  placeholder: string;
+  noTagsMessage: string;
+  errorMessage?: string;
+  onValueChange: (value: string) => void;
+  value: string;
+}
+export const ClassicAutocomplete = ({
+  tags,
+  label,
+  placeholder,
+  noTagsMessage,
+  errorMessage,
+  onValueChange,
+  value,
+}: ClassicAutocompleteProps) => {
+  return (
+    <AutocompleteRoot
+      value={value}
+      onValueChange={onValueChange}
+      tags={tags}
+      label={label}
+      placeholder={placeholder}
+    >
+      <AutocompletePortal>
+        <AutocompletePositioner>
+          <AutocompletePopup>
+            <AutocompleteEmpty>{noTagsMessage}</AutocompleteEmpty>
+            <AutocompleteList />
+          </AutocompletePopup>
+        </AutocompletePositioner>
+      </AutocompletePortal>
+      {errorMessage && (
+        <Text variant="error" color="danger">
+          {errorMessage}
+        </Text>
+      )}
+    </AutocompleteRoot>
+  );
+};

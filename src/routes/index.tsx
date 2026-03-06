@@ -6,12 +6,11 @@ import { Accordion } from "@base-ui/react/accordion";
 import { FaPlus } from "react-icons/fa";
 import DeleteUserModal from "../testingComponents/DeleteUserModal";
 import AddNewUserModal from "../testingComponents/addNewUserModal";
-import AutocompleteInput from "../shared/ui/AutocompleteInput";
 import AvatarImage from "../shared/ui/Avatar";
 import Button from "../shared/ui/Button";
 import SkeletonLoading from "../shared/ui/Skeleton";
-
-import MultipleSelect from "../shared/ui/MultipleSelect";
+import { ClassicAutocomplete } from "../shared/ui/AutocompleteInput";
+import { MultipleSelect } from "../shared/ui/MultipleSelect";
 import Input from "../shared/ui/Input";
 import Meter from "../shared/ui/Meter";
 import Popover from "../shared/ui/Popover";
@@ -170,7 +169,14 @@ function RouteComponent() {
             <p className="text-lg font-bold text-gray-800">
               Autocomplete input
             </p>
-            <AutocompleteInput items={autocompleteItems} />
+            <ClassicAutocomplete
+              value={""}
+              onValueChange={() => {}}
+              label="Select a tag"
+              placeholder="Search for a tag"
+              noTagsMessage="No tags found"
+              tags={autocompleteItems}
+            />
           </div>
 
           <div>
@@ -243,12 +249,10 @@ function RouteComponent() {
             <p className="text-lg font-bold text-gray-800">Multiple Select</p>
 
             <MultipleSelect
+              items={fruits}
               label="Select your favorite fruits"
-              options={fruits}
               placeholder="Select your favorite fruits"
-              onValueChange={(value) => {
-                console.log(value, "value");
-              }}
+              noOptionsMessage="No fruits found"
             />
           </div>
 
@@ -307,6 +311,7 @@ function RouteComponent() {
           <div>
             <p className="text-lg font-bold text-gray-800">Select</p>
             <Selector
+              onValueChange={() => {}}
               fieldLabel="Apples"
               items={apples}
               placeholder="Select an apple"
