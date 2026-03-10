@@ -20,7 +20,7 @@ import BottomDrawer from "../testingComponents/bottomDrawer";
 import StackDrawer from "../testingComponents/stackDrawer";
 import ActionSheetDrawer from "../testingComponents/actionSheetDrawer";
 import Switch from "../shared/ui/Switch";
-import NumberCounter from "../testingComponents/numberCounter";
+import { NumberCounter } from "../testingComponents/numberCounter";
 import RadioGroupField from "../shared/ui/RadioGroup";
 import { Controller } from "react-hook-form";
 import { RadioGroup, RadioIndicator, RadioRoot } from "../shared/ui/Radio";
@@ -344,7 +344,7 @@ function RouteComponent() {
           </div>
           <div>
             <p className="text-lg font-bold text-gray-800">Number Counter</p>
-            <NumberCounter onChange={() => {}} />
+            <NumberCounter min={0} max={100} step={1} label="Number Counter" />
           </div>
 
           <div>
