@@ -9,182 +9,202 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProtectedRouteRouteImport } from './routes/_protected/route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ToasterIndexRouteImport } from './routes/toaster/index'
-import { Route as TextExampleIndexRouteImport } from './routes/text-example/index'
-import { Route as TanstackAiChatIndexRouteImport } from './routes/tanstack-ai-chat/index'
-import { Route as TabExampleIndexRouteImport } from './routes/tab-example/index'
-import { Route as SwitchExampleIndexRouteImport } from './routes/switch-example/index'
-import { Route as SkeletonExampleIndexRouteImport } from './routes/skeleton-example/index'
-import { Route as SelectExampleIndexRouteImport } from './routes/select-example/index'
-import { Route as RadioExampleIndexRouteImport } from './routes/radio-example/index'
-import { Route as NumberCounterExampleIndexRouteImport } from './routes/number-counter-example/index'
-import { Route as ModalExampleIndexRouteImport } from './routes/modal-example/index'
-import { Route as InputsExampleIndexRouteImport } from './routes/inputs-example/index'
-import { Route as FieldExampleIndexRouteImport } from './routes/field-example/index'
-import { Route as DrawerExampleIndexRouteImport } from './routes/drawer-example/index'
-import { Route as CheckboxExampleIndexRouteImport } from './routes/checkbox-example/index'
-import { Route as ButtonsExampleIndexRouteImport } from './routes/buttons-example/index'
-import { Route as AvatarIndexRouteImport } from './routes/avatar/index'
-import { Route as AccordionExampleIndexRouteImport } from './routes/accordion-example/index'
+import { Route as AuthLoginRouteImport } from './routes/auth/login'
+import { Route as ProtectedToasterIndexRouteImport } from './routes/_protected/toaster/index'
+import { Route as ProtectedTextExampleIndexRouteImport } from './routes/_protected/text-example/index'
+import { Route as ProtectedTanstackAiChatIndexRouteImport } from './routes/_protected/tanstack-ai-chat/index'
+import { Route as ProtectedTabExampleIndexRouteImport } from './routes/_protected/tab-example/index'
+import { Route as ProtectedSwitchExampleIndexRouteImport } from './routes/_protected/switch-example/index'
+import { Route as ProtectedSkeletonExampleIndexRouteImport } from './routes/_protected/skeleton-example/index'
+import { Route as ProtectedSelectExampleIndexRouteImport } from './routes/_protected/select-example/index'
+import { Route as ProtectedRadioExampleIndexRouteImport } from './routes/_protected/radio-example/index'
+import { Route as ProtectedModalExampleIndexRouteImport } from './routes/_protected/modal-example/index'
+import { Route as ProtectedInputsExampleIndexRouteImport } from './routes/_protected/inputs-example/index'
+import { Route as ProtectedFieldExampleIndexRouteImport } from './routes/_protected/field-example/index'
+import { Route as ProtectedDrawerExampleIndexRouteImport } from './routes/_protected/drawer-example/index'
+import { Route as ProtectedCheckboxExampleIndexRouteImport } from './routes/_protected/checkbox-example/index'
+import { Route as ProtectedButtonsExampleIndexRouteImport } from './routes/_protected/buttons-example/index'
+import { Route as ProtectedAvatarIndexRouteImport } from './routes/_protected/avatar/index'
+import { Route as ProtectedAccordionExampleIndexRouteImport } from './routes/_protected/accordion-example/index'
 
+const ProtectedRouteRoute = ProtectedRouteRouteImport.update({
+  id: '/_protected',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ToasterIndexRoute = ToasterIndexRouteImport.update({
+const AuthLoginRoute = AuthLoginRouteImport.update({
+  id: '/auth/login',
+  path: '/auth/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProtectedToasterIndexRoute = ProtectedToasterIndexRouteImport.update({
   id: '/toaster/',
   path: '/toaster/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => ProtectedRouteRoute,
 } as any)
-const TextExampleIndexRoute = TextExampleIndexRouteImport.update({
-  id: '/text-example/',
-  path: '/text-example/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TanstackAiChatIndexRoute = TanstackAiChatIndexRouteImport.update({
-  id: '/tanstack-ai-chat/',
-  path: '/tanstack-ai-chat/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TabExampleIndexRoute = TabExampleIndexRouteImport.update({
-  id: '/tab-example/',
-  path: '/tab-example/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SwitchExampleIndexRoute = SwitchExampleIndexRouteImport.update({
-  id: '/switch-example/',
-  path: '/switch-example/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SkeletonExampleIndexRoute = SkeletonExampleIndexRouteImport.update({
-  id: '/skeleton-example/',
-  path: '/skeleton-example/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SelectExampleIndexRoute = SelectExampleIndexRouteImport.update({
-  id: '/select-example/',
-  path: '/select-example/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RadioExampleIndexRoute = RadioExampleIndexRouteImport.update({
-  id: '/radio-example/',
-  path: '/radio-example/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NumberCounterExampleIndexRoute =
-  NumberCounterExampleIndexRouteImport.update({
-    id: '/number-counter-example/',
-    path: '/number-counter-example/',
-    getParentRoute: () => rootRouteImport,
+const ProtectedTextExampleIndexRoute =
+  ProtectedTextExampleIndexRouteImport.update({
+    id: '/text-example/',
+    path: '/text-example/',
+    getParentRoute: () => ProtectedRouteRoute,
   } as any)
-const ModalExampleIndexRoute = ModalExampleIndexRouteImport.update({
-  id: '/modal-example/',
-  path: '/modal-example/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const InputsExampleIndexRoute = InputsExampleIndexRouteImport.update({
-  id: '/inputs-example/',
-  path: '/inputs-example/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FieldExampleIndexRoute = FieldExampleIndexRouteImport.update({
-  id: '/field-example/',
-  path: '/field-example/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DrawerExampleIndexRoute = DrawerExampleIndexRouteImport.update({
-  id: '/drawer-example/',
-  path: '/drawer-example/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CheckboxExampleIndexRoute = CheckboxExampleIndexRouteImport.update({
-  id: '/checkbox-example/',
-  path: '/checkbox-example/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ButtonsExampleIndexRoute = ButtonsExampleIndexRouteImport.update({
-  id: '/buttons-example/',
-  path: '/buttons-example/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AvatarIndexRoute = AvatarIndexRouteImport.update({
+const ProtectedTanstackAiChatIndexRoute =
+  ProtectedTanstackAiChatIndexRouteImport.update({
+    id: '/tanstack-ai-chat/',
+    path: '/tanstack-ai-chat/',
+    getParentRoute: () => ProtectedRouteRoute,
+  } as any)
+const ProtectedTabExampleIndexRoute =
+  ProtectedTabExampleIndexRouteImport.update({
+    id: '/tab-example/',
+    path: '/tab-example/',
+    getParentRoute: () => ProtectedRouteRoute,
+  } as any)
+const ProtectedSwitchExampleIndexRoute =
+  ProtectedSwitchExampleIndexRouteImport.update({
+    id: '/switch-example/',
+    path: '/switch-example/',
+    getParentRoute: () => ProtectedRouteRoute,
+  } as any)
+const ProtectedSkeletonExampleIndexRoute =
+  ProtectedSkeletonExampleIndexRouteImport.update({
+    id: '/skeleton-example/',
+    path: '/skeleton-example/',
+    getParentRoute: () => ProtectedRouteRoute,
+  } as any)
+const ProtectedSelectExampleIndexRoute =
+  ProtectedSelectExampleIndexRouteImport.update({
+    id: '/select-example/',
+    path: '/select-example/',
+    getParentRoute: () => ProtectedRouteRoute,
+  } as any)
+const ProtectedRadioExampleIndexRoute =
+  ProtectedRadioExampleIndexRouteImport.update({
+    id: '/radio-example/',
+    path: '/radio-example/',
+    getParentRoute: () => ProtectedRouteRoute,
+  } as any)
+const ProtectedModalExampleIndexRoute =
+  ProtectedModalExampleIndexRouteImport.update({
+    id: '/modal-example/',
+    path: '/modal-example/',
+    getParentRoute: () => ProtectedRouteRoute,
+  } as any)
+const ProtectedInputsExampleIndexRoute =
+  ProtectedInputsExampleIndexRouteImport.update({
+    id: '/inputs-example/',
+    path: '/inputs-example/',
+    getParentRoute: () => ProtectedRouteRoute,
+  } as any)
+const ProtectedFieldExampleIndexRoute =
+  ProtectedFieldExampleIndexRouteImport.update({
+    id: '/field-example/',
+    path: '/field-example/',
+    getParentRoute: () => ProtectedRouteRoute,
+  } as any)
+const ProtectedDrawerExampleIndexRoute =
+  ProtectedDrawerExampleIndexRouteImport.update({
+    id: '/drawer-example/',
+    path: '/drawer-example/',
+    getParentRoute: () => ProtectedRouteRoute,
+  } as any)
+const ProtectedCheckboxExampleIndexRoute =
+  ProtectedCheckboxExampleIndexRouteImport.update({
+    id: '/checkbox-example/',
+    path: '/checkbox-example/',
+    getParentRoute: () => ProtectedRouteRoute,
+  } as any)
+const ProtectedButtonsExampleIndexRoute =
+  ProtectedButtonsExampleIndexRouteImport.update({
+    id: '/buttons-example/',
+    path: '/buttons-example/',
+    getParentRoute: () => ProtectedRouteRoute,
+  } as any)
+const ProtectedAvatarIndexRoute = ProtectedAvatarIndexRouteImport.update({
   id: '/avatar/',
   path: '/avatar/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => ProtectedRouteRoute,
 } as any)
-const AccordionExampleIndexRoute = AccordionExampleIndexRouteImport.update({
-  id: '/accordion-example/',
-  path: '/accordion-example/',
-  getParentRoute: () => rootRouteImport,
-} as any)
+const ProtectedAccordionExampleIndexRoute =
+  ProtectedAccordionExampleIndexRouteImport.update({
+    id: '/accordion-example/',
+    path: '/accordion-example/',
+    getParentRoute: () => ProtectedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/accordion-example': typeof AccordionExampleIndexRoute
-  '/avatar': typeof AvatarIndexRoute
-  '/buttons-example': typeof ButtonsExampleIndexRoute
-  '/checkbox-example': typeof CheckboxExampleIndexRoute
-  '/drawer-example': typeof DrawerExampleIndexRoute
-  '/field-example': typeof FieldExampleIndexRoute
-  '/inputs-example': typeof InputsExampleIndexRoute
-  '/modal-example': typeof ModalExampleIndexRoute
-  '/number-counter-example': typeof NumberCounterExampleIndexRoute
-  '/radio-example': typeof RadioExampleIndexRoute
-  '/select-example': typeof SelectExampleIndexRoute
-  '/skeleton-example': typeof SkeletonExampleIndexRoute
-  '/switch-example': typeof SwitchExampleIndexRoute
-  '/tab-example': typeof TabExampleIndexRoute
-  '/tanstack-ai-chat': typeof TanstackAiChatIndexRoute
-  '/text-example': typeof TextExampleIndexRoute
-  '/toaster': typeof ToasterIndexRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/accordion-example': typeof ProtectedAccordionExampleIndexRoute
+  '/avatar': typeof ProtectedAvatarIndexRoute
+  '/buttons-example': typeof ProtectedButtonsExampleIndexRoute
+  '/checkbox-example': typeof ProtectedCheckboxExampleIndexRoute
+  '/drawer-example': typeof ProtectedDrawerExampleIndexRoute
+  '/field-example': typeof ProtectedFieldExampleIndexRoute
+  '/inputs-example': typeof ProtectedInputsExampleIndexRoute
+  '/modal-example': typeof ProtectedModalExampleIndexRoute
+  '/radio-example': typeof ProtectedRadioExampleIndexRoute
+  '/select-example': typeof ProtectedSelectExampleIndexRoute
+  '/skeleton-example': typeof ProtectedSkeletonExampleIndexRoute
+  '/switch-example': typeof ProtectedSwitchExampleIndexRoute
+  '/tab-example': typeof ProtectedTabExampleIndexRoute
+  '/tanstack-ai-chat': typeof ProtectedTanstackAiChatIndexRoute
+  '/text-example': typeof ProtectedTextExampleIndexRoute
+  '/toaster': typeof ProtectedToasterIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/accordion-example': typeof AccordionExampleIndexRoute
-  '/avatar': typeof AvatarIndexRoute
-  '/buttons-example': typeof ButtonsExampleIndexRoute
-  '/checkbox-example': typeof CheckboxExampleIndexRoute
-  '/drawer-example': typeof DrawerExampleIndexRoute
-  '/field-example': typeof FieldExampleIndexRoute
-  '/inputs-example': typeof InputsExampleIndexRoute
-  '/modal-example': typeof ModalExampleIndexRoute
-  '/number-counter-example': typeof NumberCounterExampleIndexRoute
-  '/radio-example': typeof RadioExampleIndexRoute
-  '/select-example': typeof SelectExampleIndexRoute
-  '/skeleton-example': typeof SkeletonExampleIndexRoute
-  '/switch-example': typeof SwitchExampleIndexRoute
-  '/tab-example': typeof TabExampleIndexRoute
-  '/tanstack-ai-chat': typeof TanstackAiChatIndexRoute
-  '/text-example': typeof TextExampleIndexRoute
-  '/toaster': typeof ToasterIndexRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/accordion-example': typeof ProtectedAccordionExampleIndexRoute
+  '/avatar': typeof ProtectedAvatarIndexRoute
+  '/buttons-example': typeof ProtectedButtonsExampleIndexRoute
+  '/checkbox-example': typeof ProtectedCheckboxExampleIndexRoute
+  '/drawer-example': typeof ProtectedDrawerExampleIndexRoute
+  '/field-example': typeof ProtectedFieldExampleIndexRoute
+  '/inputs-example': typeof ProtectedInputsExampleIndexRoute
+  '/modal-example': typeof ProtectedModalExampleIndexRoute
+  '/radio-example': typeof ProtectedRadioExampleIndexRoute
+  '/select-example': typeof ProtectedSelectExampleIndexRoute
+  '/skeleton-example': typeof ProtectedSkeletonExampleIndexRoute
+  '/switch-example': typeof ProtectedSwitchExampleIndexRoute
+  '/tab-example': typeof ProtectedTabExampleIndexRoute
+  '/tanstack-ai-chat': typeof ProtectedTanstackAiChatIndexRoute
+  '/text-example': typeof ProtectedTextExampleIndexRoute
+  '/toaster': typeof ProtectedToasterIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/accordion-example/': typeof AccordionExampleIndexRoute
-  '/avatar/': typeof AvatarIndexRoute
-  '/buttons-example/': typeof ButtonsExampleIndexRoute
-  '/checkbox-example/': typeof CheckboxExampleIndexRoute
-  '/drawer-example/': typeof DrawerExampleIndexRoute
-  '/field-example/': typeof FieldExampleIndexRoute
-  '/inputs-example/': typeof InputsExampleIndexRoute
-  '/modal-example/': typeof ModalExampleIndexRoute
-  '/number-counter-example/': typeof NumberCounterExampleIndexRoute
-  '/radio-example/': typeof RadioExampleIndexRoute
-  '/select-example/': typeof SelectExampleIndexRoute
-  '/skeleton-example/': typeof SkeletonExampleIndexRoute
-  '/switch-example/': typeof SwitchExampleIndexRoute
-  '/tab-example/': typeof TabExampleIndexRoute
-  '/tanstack-ai-chat/': typeof TanstackAiChatIndexRoute
-  '/text-example/': typeof TextExampleIndexRoute
-  '/toaster/': typeof ToasterIndexRoute
+  '/_protected': typeof ProtectedRouteRouteWithChildren
+  '/auth/login': typeof AuthLoginRoute
+  '/_protected/accordion-example/': typeof ProtectedAccordionExampleIndexRoute
+  '/_protected/avatar/': typeof ProtectedAvatarIndexRoute
+  '/_protected/buttons-example/': typeof ProtectedButtonsExampleIndexRoute
+  '/_protected/checkbox-example/': typeof ProtectedCheckboxExampleIndexRoute
+  '/_protected/drawer-example/': typeof ProtectedDrawerExampleIndexRoute
+  '/_protected/field-example/': typeof ProtectedFieldExampleIndexRoute
+  '/_protected/inputs-example/': typeof ProtectedInputsExampleIndexRoute
+  '/_protected/modal-example/': typeof ProtectedModalExampleIndexRoute
+  '/_protected/radio-example/': typeof ProtectedRadioExampleIndexRoute
+  '/_protected/select-example/': typeof ProtectedSelectExampleIndexRoute
+  '/_protected/skeleton-example/': typeof ProtectedSkeletonExampleIndexRoute
+  '/_protected/switch-example/': typeof ProtectedSwitchExampleIndexRoute
+  '/_protected/tab-example/': typeof ProtectedTabExampleIndexRoute
+  '/_protected/tanstack-ai-chat/': typeof ProtectedTanstackAiChatIndexRoute
+  '/_protected/text-example/': typeof ProtectedTextExampleIndexRoute
+  '/_protected/toaster/': typeof ProtectedToasterIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/auth/login'
     | '/accordion-example'
     | '/avatar'
     | '/buttons-example'
@@ -193,7 +213,6 @@ export interface FileRouteTypes {
     | '/field-example'
     | '/inputs-example'
     | '/modal-example'
-    | '/number-counter-example'
     | '/radio-example'
     | '/select-example'
     | '/skeleton-example'
@@ -205,6 +224,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/auth/login'
     | '/accordion-example'
     | '/avatar'
     | '/buttons-example'
@@ -213,7 +233,6 @@ export interface FileRouteTypes {
     | '/field-example'
     | '/inputs-example'
     | '/modal-example'
-    | '/number-counter-example'
     | '/radio-example'
     | '/select-example'
     | '/skeleton-example'
@@ -225,48 +244,41 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/accordion-example/'
-    | '/avatar/'
-    | '/buttons-example/'
-    | '/checkbox-example/'
-    | '/drawer-example/'
-    | '/field-example/'
-    | '/inputs-example/'
-    | '/modal-example/'
-    | '/number-counter-example/'
-    | '/radio-example/'
-    | '/select-example/'
-    | '/skeleton-example/'
-    | '/switch-example/'
-    | '/tab-example/'
-    | '/tanstack-ai-chat/'
-    | '/text-example/'
-    | '/toaster/'
+    | '/_protected'
+    | '/auth/login'
+    | '/_protected/accordion-example/'
+    | '/_protected/avatar/'
+    | '/_protected/buttons-example/'
+    | '/_protected/checkbox-example/'
+    | '/_protected/drawer-example/'
+    | '/_protected/field-example/'
+    | '/_protected/inputs-example/'
+    | '/_protected/modal-example/'
+    | '/_protected/radio-example/'
+    | '/_protected/select-example/'
+    | '/_protected/skeleton-example/'
+    | '/_protected/switch-example/'
+    | '/_protected/tab-example/'
+    | '/_protected/tanstack-ai-chat/'
+    | '/_protected/text-example/'
+    | '/_protected/toaster/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AccordionExampleIndexRoute: typeof AccordionExampleIndexRoute
-  AvatarIndexRoute: typeof AvatarIndexRoute
-  ButtonsExampleIndexRoute: typeof ButtonsExampleIndexRoute
-  CheckboxExampleIndexRoute: typeof CheckboxExampleIndexRoute
-  DrawerExampleIndexRoute: typeof DrawerExampleIndexRoute
-  FieldExampleIndexRoute: typeof FieldExampleIndexRoute
-  InputsExampleIndexRoute: typeof InputsExampleIndexRoute
-  ModalExampleIndexRoute: typeof ModalExampleIndexRoute
-  NumberCounterExampleIndexRoute: typeof NumberCounterExampleIndexRoute
-  RadioExampleIndexRoute: typeof RadioExampleIndexRoute
-  SelectExampleIndexRoute: typeof SelectExampleIndexRoute
-  SkeletonExampleIndexRoute: typeof SkeletonExampleIndexRoute
-  SwitchExampleIndexRoute: typeof SwitchExampleIndexRoute
-  TabExampleIndexRoute: typeof TabExampleIndexRoute
-  TanstackAiChatIndexRoute: typeof TanstackAiChatIndexRoute
-  TextExampleIndexRoute: typeof TextExampleIndexRoute
-  ToasterIndexRoute: typeof ToasterIndexRoute
+  ProtectedRouteRoute: typeof ProtectedRouteRouteWithChildren
+  AuthLoginRoute: typeof AuthLoginRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/_protected': {
+      id: '/_protected'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof ProtectedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -274,147 +286,174 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/toaster/': {
-      id: '/toaster/'
+    '/auth/login': {
+      id: '/auth/login'
+      path: '/auth/login'
+      fullPath: '/auth/login'
+      preLoaderRoute: typeof AuthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_protected/toaster/': {
+      id: '/_protected/toaster/'
       path: '/toaster'
       fullPath: '/toaster'
-      preLoaderRoute: typeof ToasterIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedToasterIndexRouteImport
+      parentRoute: typeof ProtectedRouteRoute
     }
-    '/text-example/': {
-      id: '/text-example/'
+    '/_protected/text-example/': {
+      id: '/_protected/text-example/'
       path: '/text-example'
       fullPath: '/text-example'
-      preLoaderRoute: typeof TextExampleIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedTextExampleIndexRouteImport
+      parentRoute: typeof ProtectedRouteRoute
     }
-    '/tanstack-ai-chat/': {
-      id: '/tanstack-ai-chat/'
+    '/_protected/tanstack-ai-chat/': {
+      id: '/_protected/tanstack-ai-chat/'
       path: '/tanstack-ai-chat'
       fullPath: '/tanstack-ai-chat'
-      preLoaderRoute: typeof TanstackAiChatIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedTanstackAiChatIndexRouteImport
+      parentRoute: typeof ProtectedRouteRoute
     }
-    '/tab-example/': {
-      id: '/tab-example/'
+    '/_protected/tab-example/': {
+      id: '/_protected/tab-example/'
       path: '/tab-example'
       fullPath: '/tab-example'
-      preLoaderRoute: typeof TabExampleIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedTabExampleIndexRouteImport
+      parentRoute: typeof ProtectedRouteRoute
     }
-    '/switch-example/': {
-      id: '/switch-example/'
+    '/_protected/switch-example/': {
+      id: '/_protected/switch-example/'
       path: '/switch-example'
       fullPath: '/switch-example'
-      preLoaderRoute: typeof SwitchExampleIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedSwitchExampleIndexRouteImport
+      parentRoute: typeof ProtectedRouteRoute
     }
-    '/skeleton-example/': {
-      id: '/skeleton-example/'
+    '/_protected/skeleton-example/': {
+      id: '/_protected/skeleton-example/'
       path: '/skeleton-example'
       fullPath: '/skeleton-example'
-      preLoaderRoute: typeof SkeletonExampleIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedSkeletonExampleIndexRouteImport
+      parentRoute: typeof ProtectedRouteRoute
     }
-    '/select-example/': {
-      id: '/select-example/'
+    '/_protected/select-example/': {
+      id: '/_protected/select-example/'
       path: '/select-example'
       fullPath: '/select-example'
-      preLoaderRoute: typeof SelectExampleIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedSelectExampleIndexRouteImport
+      parentRoute: typeof ProtectedRouteRoute
     }
-    '/radio-example/': {
-      id: '/radio-example/'
+    '/_protected/radio-example/': {
+      id: '/_protected/radio-example/'
       path: '/radio-example'
       fullPath: '/radio-example'
-      preLoaderRoute: typeof RadioExampleIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedRadioExampleIndexRouteImport
+      parentRoute: typeof ProtectedRouteRoute
     }
-    '/number-counter-example/': {
-      id: '/number-counter-example/'
-      path: '/number-counter-example'
-      fullPath: '/number-counter-example'
-      preLoaderRoute: typeof NumberCounterExampleIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/modal-example/': {
-      id: '/modal-example/'
+    '/_protected/modal-example/': {
+      id: '/_protected/modal-example/'
       path: '/modal-example'
       fullPath: '/modal-example'
-      preLoaderRoute: typeof ModalExampleIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedModalExampleIndexRouteImport
+      parentRoute: typeof ProtectedRouteRoute
     }
-    '/inputs-example/': {
-      id: '/inputs-example/'
+    '/_protected/inputs-example/': {
+      id: '/_protected/inputs-example/'
       path: '/inputs-example'
       fullPath: '/inputs-example'
-      preLoaderRoute: typeof InputsExampleIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedInputsExampleIndexRouteImport
+      parentRoute: typeof ProtectedRouteRoute
     }
-    '/field-example/': {
-      id: '/field-example/'
+    '/_protected/field-example/': {
+      id: '/_protected/field-example/'
       path: '/field-example'
       fullPath: '/field-example'
-      preLoaderRoute: typeof FieldExampleIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedFieldExampleIndexRouteImport
+      parentRoute: typeof ProtectedRouteRoute
     }
-    '/drawer-example/': {
-      id: '/drawer-example/'
+    '/_protected/drawer-example/': {
+      id: '/_protected/drawer-example/'
       path: '/drawer-example'
       fullPath: '/drawer-example'
-      preLoaderRoute: typeof DrawerExampleIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedDrawerExampleIndexRouteImport
+      parentRoute: typeof ProtectedRouteRoute
     }
-    '/checkbox-example/': {
-      id: '/checkbox-example/'
+    '/_protected/checkbox-example/': {
+      id: '/_protected/checkbox-example/'
       path: '/checkbox-example'
       fullPath: '/checkbox-example'
-      preLoaderRoute: typeof CheckboxExampleIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedCheckboxExampleIndexRouteImport
+      parentRoute: typeof ProtectedRouteRoute
     }
-    '/buttons-example/': {
-      id: '/buttons-example/'
+    '/_protected/buttons-example/': {
+      id: '/_protected/buttons-example/'
       path: '/buttons-example'
       fullPath: '/buttons-example'
-      preLoaderRoute: typeof ButtonsExampleIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedButtonsExampleIndexRouteImport
+      parentRoute: typeof ProtectedRouteRoute
     }
-    '/avatar/': {
-      id: '/avatar/'
+    '/_protected/avatar/': {
+      id: '/_protected/avatar/'
       path: '/avatar'
       fullPath: '/avatar'
-      preLoaderRoute: typeof AvatarIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedAvatarIndexRouteImport
+      parentRoute: typeof ProtectedRouteRoute
     }
-    '/accordion-example/': {
-      id: '/accordion-example/'
+    '/_protected/accordion-example/': {
+      id: '/_protected/accordion-example/'
       path: '/accordion-example'
       fullPath: '/accordion-example'
-      preLoaderRoute: typeof AccordionExampleIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof ProtectedAccordionExampleIndexRouteImport
+      parentRoute: typeof ProtectedRouteRoute
     }
   }
 }
 
+interface ProtectedRouteRouteChildren {
+  ProtectedAccordionExampleIndexRoute: typeof ProtectedAccordionExampleIndexRoute
+  ProtectedAvatarIndexRoute: typeof ProtectedAvatarIndexRoute
+  ProtectedButtonsExampleIndexRoute: typeof ProtectedButtonsExampleIndexRoute
+  ProtectedCheckboxExampleIndexRoute: typeof ProtectedCheckboxExampleIndexRoute
+  ProtectedDrawerExampleIndexRoute: typeof ProtectedDrawerExampleIndexRoute
+  ProtectedFieldExampleIndexRoute: typeof ProtectedFieldExampleIndexRoute
+  ProtectedInputsExampleIndexRoute: typeof ProtectedInputsExampleIndexRoute
+  ProtectedModalExampleIndexRoute: typeof ProtectedModalExampleIndexRoute
+  ProtectedRadioExampleIndexRoute: typeof ProtectedRadioExampleIndexRoute
+  ProtectedSelectExampleIndexRoute: typeof ProtectedSelectExampleIndexRoute
+  ProtectedSkeletonExampleIndexRoute: typeof ProtectedSkeletonExampleIndexRoute
+  ProtectedSwitchExampleIndexRoute: typeof ProtectedSwitchExampleIndexRoute
+  ProtectedTabExampleIndexRoute: typeof ProtectedTabExampleIndexRoute
+  ProtectedTanstackAiChatIndexRoute: typeof ProtectedTanstackAiChatIndexRoute
+  ProtectedTextExampleIndexRoute: typeof ProtectedTextExampleIndexRoute
+  ProtectedToasterIndexRoute: typeof ProtectedToasterIndexRoute
+}
+
+const ProtectedRouteRouteChildren: ProtectedRouteRouteChildren = {
+  ProtectedAccordionExampleIndexRoute: ProtectedAccordionExampleIndexRoute,
+  ProtectedAvatarIndexRoute: ProtectedAvatarIndexRoute,
+  ProtectedButtonsExampleIndexRoute: ProtectedButtonsExampleIndexRoute,
+  ProtectedCheckboxExampleIndexRoute: ProtectedCheckboxExampleIndexRoute,
+  ProtectedDrawerExampleIndexRoute: ProtectedDrawerExampleIndexRoute,
+  ProtectedFieldExampleIndexRoute: ProtectedFieldExampleIndexRoute,
+  ProtectedInputsExampleIndexRoute: ProtectedInputsExampleIndexRoute,
+  ProtectedModalExampleIndexRoute: ProtectedModalExampleIndexRoute,
+  ProtectedRadioExampleIndexRoute: ProtectedRadioExampleIndexRoute,
+  ProtectedSelectExampleIndexRoute: ProtectedSelectExampleIndexRoute,
+  ProtectedSkeletonExampleIndexRoute: ProtectedSkeletonExampleIndexRoute,
+  ProtectedSwitchExampleIndexRoute: ProtectedSwitchExampleIndexRoute,
+  ProtectedTabExampleIndexRoute: ProtectedTabExampleIndexRoute,
+  ProtectedTanstackAiChatIndexRoute: ProtectedTanstackAiChatIndexRoute,
+  ProtectedTextExampleIndexRoute: ProtectedTextExampleIndexRoute,
+  ProtectedToasterIndexRoute: ProtectedToasterIndexRoute,
+}
+
+const ProtectedRouteRouteWithChildren = ProtectedRouteRoute._addFileChildren(
+  ProtectedRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AccordionExampleIndexRoute: AccordionExampleIndexRoute,
-  AvatarIndexRoute: AvatarIndexRoute,
-  ButtonsExampleIndexRoute: ButtonsExampleIndexRoute,
-  CheckboxExampleIndexRoute: CheckboxExampleIndexRoute,
-  DrawerExampleIndexRoute: DrawerExampleIndexRoute,
-  FieldExampleIndexRoute: FieldExampleIndexRoute,
-  InputsExampleIndexRoute: InputsExampleIndexRoute,
-  ModalExampleIndexRoute: ModalExampleIndexRoute,
-  NumberCounterExampleIndexRoute: NumberCounterExampleIndexRoute,
-  RadioExampleIndexRoute: RadioExampleIndexRoute,
-  SelectExampleIndexRoute: SelectExampleIndexRoute,
-  SkeletonExampleIndexRoute: SkeletonExampleIndexRoute,
-  SwitchExampleIndexRoute: SwitchExampleIndexRoute,
-  TabExampleIndexRoute: TabExampleIndexRoute,
-  TanstackAiChatIndexRoute: TanstackAiChatIndexRoute,
-  TextExampleIndexRoute: TextExampleIndexRoute,
-  ToasterIndexRoute: ToasterIndexRoute,
+  ProtectedRouteRoute: ProtectedRouteRouteWithChildren,
+  AuthLoginRoute: AuthLoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

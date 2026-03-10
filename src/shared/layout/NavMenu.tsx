@@ -11,8 +11,7 @@ const NavMenu = () => {
           </Text>
         </div>
         <nav className="flex flex-col items-start gap-4">
-          <TanstackLink href="/">All examples</TanstackLink>
-          <TanstackLink href="/accordion-example/">
+          <TanstackLink href="/accordion-example">
             Accordion Example
           </TanstackLink>
           <TanstackLink href="/modal-example/">Modal Example</TanstackLink>
